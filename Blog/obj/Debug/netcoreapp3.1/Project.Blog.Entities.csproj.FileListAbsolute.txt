@@ -1,0 +1,9 @@
+E:\C#Project\Blog\Blog\bin\Debug\netcoreapp3.1\Project.Blog.Entities.deps.json
+E:\C#Project\Blog\Blog\bin\Debug\netcoreapp3.1\Project.Blog.Entities.dll
+E:\C#Project\Blog\Blog\bin\Debug\netcoreapp3.1\Project.Blog.Entities.pdb
+E:\C#Project\Blog\Blog\obj\Debug\netcoreapp3.1\Project.Blog.Entities.csprojAssemblyReference.cache
+E:\C#Project\Blog\Blog\obj\Debug\netcoreapp3.1\Project.Blog.Entities.AssemblyInfoInputs.cache
+E:\C#Project\Blog\Blog\obj\Debug\netcoreapp3.1\Project.Blog.Entities.AssemblyInfo.cs
+E:\C#Project\Blog\Blog\obj\Debug\netcoreapp3.1\Project.Blog.Entities.csproj.CoreCompileInputs.cache
+E:\C#Project\Blog\Blog\obj\Debug\netcoreapp3.1\Project.Blog.Entities.dll
+E:\C#Project\Blog\Blog\obj\Debug\netcoreapp3.1\Project.Blog.Entities.pdb

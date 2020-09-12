@@ -1,0 +1,13 @@
+E:\C#Project\Blog\Project.Blog.Dto\bin\Debug\netcoreapp3.1\Project.Blog.Dto.exe
+E:\C#Project\Blog\Project.Blog.Dto\bin\Debug\netcoreapp3.1\Project.Blog.Dto.deps.json
+E:\C#Project\Blog\Project.Blog.Dto\bin\Debug\netcoreapp3.1\Project.Blog.Dto.runtimeconfig.json
+E:\C#Project\Blog\Project.Blog.Dto\bin\Debug\netcoreapp3.1\Project.Blog.Dto.runtimeconfig.dev.json
+E:\C#Project\Blog\Project.Blog.Dto\bin\Debug\netcoreapp3.1\Project.Blog.Dto.dll
+E:\C#Project\Blog\Project.Blog.Dto\bin\Debug\netcoreapp3.1\Project.Blog.Dto.pdb
+E:\C#Project\Blog\Project.Blog.Dto\obj\Debug\netcoreapp3.1\Project.Blog.Dto.csprojAssemblyReference.cache
+E:\C#Project\Blog\Project.Blog.Dto\obj\Debug\netcoreapp3.1\Project.Blog.Dto.AssemblyInfoInputs.cache
+E:\C#Project\Blog\Project.Blog.Dto\obj\Debug\netcoreapp3.1\Project.Blog.Dto.AssemblyInfo.cs
+E:\C#Project\Blog\Project.Blog.Dto\obj\Debug\netcoreapp3.1\Project.Blog.Dto.csproj.CoreCompileInputs.cache
+E:\C#Project\Blog\Project.Blog.Dto\obj\Debug\netcoreapp3.1\Project.Blog.Dto.dll
+E:\C#Project\Blog\Project.Blog.Dto\obj\Debug\netcoreapp3.1\Project.Blog.Dto.pdb
+E:\C#Project\Blog\Project.Blog.Dto\obj\Debug\netcoreapp3.1\Project.Blog.Dto.genruntimeconfig.cache

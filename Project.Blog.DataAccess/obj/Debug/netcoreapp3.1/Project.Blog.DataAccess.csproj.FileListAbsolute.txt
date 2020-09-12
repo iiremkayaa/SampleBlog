@@ -1,0 +1,15 @@
+E:\C#Project\Blog\Project.Blog.DataAccess\bin\Debug\netcoreapp3.1\Project.Blog.Entities.dll
+E:\C#Project\Blog\Project.Blog.DataAccess\obj\Debug\netcoreapp3.1\Project.Blog.DataAccess.csprojAssemblyReference.cache
+E:\C#Project\Blog\Project.Blog.DataAccess\obj\Debug\netcoreapp3.1\Project.Blog.DataAccess.AssemblyInfoInputs.cache
+E:\C#Project\Blog\Project.Blog.DataAccess\obj\Debug\netcoreapp3.1\Project.Blog.DataAccess.AssemblyInfo.cs
+E:\C#Project\Blog\Project.Blog.DataAccess\bin\Debug\netcoreapp3.1\Project.Blog.DataAccess.deps.json
+E:\C#Project\Blog\Project.Blog.DataAccess\bin\Debug\netcoreapp3.1\Project.Blog.DataAccess.runtimeconfig.json
+E:\C#Project\Blog\Project.Blog.DataAccess\bin\Debug\netcoreapp3.1\Project.Blog.DataAccess.runtimeconfig.dev.json
+E:\C#Project\Blog\Project.Blog.DataAccess\bin\Debug\netcoreapp3.1\Project.Blog.DataAccess.dll
+E:\C#Project\Blog\Project.Blog.DataAccess\bin\Debug\netcoreapp3.1\Project.Blog.DataAccess.pdb
+E:\C#Project\Blog\Project.Blog.DataAccess\bin\Debug\netcoreapp3.1\Project.Blog.Entities.pdb
+E:\C#Project\Blog\Project.Blog.DataAccess\obj\Debug\netcoreapp3.1\Project.Blog.DataAccess.csproj.CopyComplete
+E:\C#Project\Blog\Project.Blog.DataAccess\obj\Debug\netcoreapp3.1\Project.Blog.DataAccess.dll
+E:\C#Project\Blog\Project.Blog.DataAccess\obj\Debug\netcoreapp3.1\Project.Blog.DataAccess.pdb
+E:\C#Project\Blog\Project.Blog.DataAccess\obj\Debug\netcoreapp3.1\Project.Blog.DataAccess.genruntimeconfig.cache
+E:\C#Project\Blog\Project.Blog.DataAccess\obj\Debug\netcoreapp3.1\Project.Blog.DataAccess.csproj.CoreCompileInputs.cache

@@ -1,0 +1,14 @@
+E:\C#Project\Blog\Project.Blog.Business\bin\Debug\netcoreapp3.1\Project.Blog.Business.deps.json
+E:\C#Project\Blog\Project.Blog.Business\bin\Debug\netcoreapp3.1\Project.Blog.Business.dll
+E:\C#Project\Blog\Project.Blog.Business\bin\Debug\netcoreapp3.1\Project.Blog.Business.pdb
+E:\C#Project\Blog\Project.Blog.Business\obj\Debug\netcoreapp3.1\Project.Blog.Business.csprojAssemblyReference.cache
+E:\C#Project\Blog\Project.Blog.Business\obj\Debug\netcoreapp3.1\Project.Blog.Business.AssemblyInfoInputs.cache
+E:\C#Project\Blog\Project.Blog.Business\obj\Debug\netcoreapp3.1\Project.Blog.Business.AssemblyInfo.cs
+E:\C#Project\Blog\Project.Blog.Business\obj\Debug\netcoreapp3.1\Project.Blog.Business.csproj.CoreCompileInputs.cache
+E:\C#Project\Blog\Project.Blog.Business\obj\Debug\netcoreapp3.1\Project.Blog.Business.dll
+E:\C#Project\Blog\Project.Blog.Business\obj\Debug\netcoreapp3.1\Project.Blog.Business.pdb
+E:\C#Project\Blog\Project.Blog.Business\bin\Debug\netcoreapp3.1\Project.Blog.DataAccess.dll
+E:\C#Project\Blog\Project.Blog.Business\bin\Debug\netcoreapp3.1\Project.Blog.Entities.dll
+E:\C#Project\Blog\Project.Blog.Business\bin\Debug\netcoreapp3.1\Project.Blog.DataAccess.pdb
+E:\C#Project\Blog\Project.Blog.Business\bin\Debug\netcoreapp3.1\Project.Blog.Entities.pdb
+E:\C#Project\Blog\Project.Blog.Business\obj\Debug\netcoreapp3.1\Project.Blog.Business.csproj.CopyComplete

@@ -1,0 +1,18 @@
+﻿using Project.Blog.Entities.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Project.Blog.Entities.Concrete
+{
+	public class Comment : ITable
+	{
+		public int Id { get; set; }
+		public String Description { get; set; }
+		public DateTime CommentDate { get; set; }
+		public int NumberOfLikes { get; set; }
+		public DateTime LastModificationDate { get; set; }
+		public int SharingId { get; set; }
+		public Sharing Sharing { get; set; }
+	}
+}
