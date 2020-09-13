@@ -14,7 +14,9 @@ namespace Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Mapping
             builder.Property(I => I.Id).UseIdentityColumn();
             builder.Property(I => I.Title).HasMaxLength(100).IsRequired();
             builder.Property(I => I.Description).HasColumnType("ntext");
+            builder.Property(I => I.SharingDate).HasDefaultValueSql("getdate()");
             builder.HasMany(I => I.Comments).WithOne(I => I.Sharing).HasForeignKey(I => I.SharingId);
+
         }
     }  
 }

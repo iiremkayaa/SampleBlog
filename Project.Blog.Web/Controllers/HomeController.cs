@@ -28,13 +28,18 @@ namespace Project.Blog.Web.Controllers
                 {
                     Id = item.Id,
                     Title = item.Title,
-                    Description=item.Description
+                    Description=item.Description,
+                    SharingDate=item.SharingDate
                 };
                 models.Add(model);
             }
 
 
             return View(models);
+        }
+        public IActionResult SharingDetail(int id)
+        {
+            return View();
         }
 
       

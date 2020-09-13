@@ -155,8 +155,8 @@ E:\C#Project\Blog\Project.Blog.Web\bin\Debug\netcoreapp3.1\Project.Blog.Dto.exe
 E:\C#Project\Blog\Project.Blog.Web\bin\Debug\netcoreapp3.1\Project.Blog.Dto.dll
 E:\C#Project\Blog\Project.Blog.Web\bin\Debug\netcoreapp3.1\Project.Blog.Dto.pdb
 E:\C#Project\Blog\Project.Blog.Web\bin\Debug\netcoreapp3.1\libman.json
-E:\C#Project\Blog\Project.Blog.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\SharingDetails.cshtml.g.cs
 E:\C#Project\Blog\Project.Blog.Web\obj\Debug\netcoreapp3.1\Razor\Views\Category\Index.cshtml.g.cs
 E:\C#Project\Blog\Project.Blog.Web\obj\Debug\netcoreapp3.1\Razor\Views\Sharing\Index.cshtml.g.cs
 E:\C#Project\Blog\Project.Blog.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\CategoryList\Default.cshtml.g.cs
 E:\C#Project\Blog\Project.Blog.Web\obj\Debug\netcoreapp3.1\Razor\Views\Category\Details.cshtml.g.cs
+E:\C#Project\Blog\Project.Blog.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\SharingDetail.cshtml.g.cs

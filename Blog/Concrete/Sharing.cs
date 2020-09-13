@@ -15,5 +15,7 @@ namespace Project.Blog.Entities.Concrete
         public List<Comment> Comments { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
+        public DateTime SharingDate { get; set; }
+
     }
 }
