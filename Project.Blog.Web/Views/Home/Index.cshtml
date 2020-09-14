@@ -6,7 +6,7 @@
         <div class="card-body">
             <h2 class="card-title">@sharing.Title</h2>
             <p class="card-text">@sharing.Description</p>
-            <a href="/Home/SharingDetail/1">See Comments</a>
+            <a asp-action="Detail" asp-route-id="@sharing.Id" class="btn btn-primary">See Comments</a>
         </div>
         <div class="card-footer text-muted">
             Posted on @sharing.SharingDate.ToLongDateString()

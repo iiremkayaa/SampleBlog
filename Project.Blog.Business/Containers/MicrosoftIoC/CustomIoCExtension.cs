@@ -19,7 +19,8 @@ namespace Project.Blog.Business.Containers.MicrosoftIoC
             services.AddScoped<ISharingService, SharingService>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ICategoryService, CategoryService>();
-  
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
 
 

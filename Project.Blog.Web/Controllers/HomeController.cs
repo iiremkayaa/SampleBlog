@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Project.Blog.Business.Interfaces;
@@ -37,9 +38,19 @@ namespace Project.Blog.Web.Controllers
 
             return View(models);
         }
-        public IActionResult SharingDetail(int id)
+        [Authorize]
+        public async Task<IActionResult> Detail(int id)
         {
-            return View();
+
+            Sharing sharing = await _sharingService.FindByIdAsync(id);
+            SharingListModel model = new SharingListModel
+            {
+                    Id = sharing.Id,
+                    Title = sharing.Title,
+                    Description = sharing.Description,
+                    SharingDate = sharing.SharingDate,
+            };
+            return View(model);
         }
 
       

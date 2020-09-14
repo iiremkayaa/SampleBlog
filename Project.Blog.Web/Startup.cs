@@ -1,14 +1,21 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Project.Blog.Business.Containers.MicrosoftIoC;
+using Project.Blog.Business.StringInfos;
+using Project.Blog.Web.Context;
+using Project.Blog.Web.CustomValidator;
 
 namespace Project.Blog.Web
 {
@@ -24,14 +31,37 @@ namespace Project.Blog.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAutoMapper(typeof(Startup));
-            services.AddDependencies();
 
+            //services.AddAutoMapper(typeof(Startup));
+            services.AddDependencies();
+            
             services.AddControllersWithViews();
+            services.AddDbContext<BlogContext>();
+            services.AddIdentity<AppUser, AppRole>(opt =>
+            {
+                opt.Password.RequireDigit = false;
+                opt.Password.RequireLowercase = false;
+                opt.Password.RequiredLength = 1;
+                opt.Password.RequireNonAlphanumeric = false;
+                opt.Password.RequireUppercase = false;
+                opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
+                opt.Lockout.MaxFailedAccessAttempts = 3; // maximum number of failed attempts before the lockdown
+
+            }).AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<BlogContext>();
+            services.ConfigureApplicationCookie(opt =>
+            {
+                opt.LoginPath = new PathString("/Login");
+                opt.Cookie.HttpOnly = true;
+                opt.Cookie.Name = "BlogCookie";
+                opt.Cookie.SameSite = SameSiteMode.Strict;
+                opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+                opt.ExpireTimeSpan = TimeSpan.FromDays(20);
+            });
+            //services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<BlogContext>();
+            
 
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -45,6 +75,7 @@ namespace Project.Blog.Web
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

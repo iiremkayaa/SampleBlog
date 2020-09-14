@@ -1,0 +1,39 @@
+﻿@model UserRegisterModel
+@{
+    ViewData["Title"] = "SignUp";
+}
+<h1>Register</h1>
+<form asp-action="Index" method="post">
+    <div>
+        <label asp-for="@Model.Username"></label>
+        <span asp-validation-for="@Model.Username"></span>
+        <input asp-for="@Model.Username" />
+    </div>
+    <div>
+        <label asp-for="@Model.Password"></label>
+        <span asp-validation-for="@Model.Password"></span>
+        <input asp-for="@Model.Password" />
+    </div>
+    <div>
+        <label asp-for="@Model.ConfirmPassword"></label>
+        <span asp-validation-for="@Model.ConfirmPassword"></span>
+        <input asp-for="@Model.ConfirmPassword" />
+    </div>
+    <div>
+        <label asp-for="@Model.Name"></label>
+        <span asp-validation-for="@Model.Name"></span>
+        <input asp-for="@Model.Name" />
+    </div>
+    <div>
+        <label asp-for="@Model.LastName"></label>
+        <span asp-validation-for="@Model.LastName"></span>
+        <input asp-for="@Model.LastName" />
+    </div>
+    <div>
+        <label asp-for="@Model.Email"></label>
+        <span asp-validation-for="@Model.Email"></span>
+        <input asp-for="@Model.Email" />
+    </div>
+    <input type="submit" value="Register" />
+    <a asp-action="Index" asp-controller="Login">Sign in</a>
+</form>

@@ -1,0 +1,26 @@
+﻿@model UserLoginModel
+@{
+    ViewData["Title"] = "SignIn";
+}
+
+<h1>SignIn</h1>
+<form asp-action="Index" method="post">
+    <div>
+        <label asp-for="@Model.Username"></label>
+        <span asp-validation-for="@Model.Username"></span>
+        <input asp-for="@Model.Username" />
+    </div>
+    <div>
+        <label asp-for="@Model.Password"></label>
+        <span asp-validation-for="@Model.Password"></span>
+        <input asp-for="@Model.Password" />
+    </div>
+    <div>
+        <input type="checkbox" asp-for="@Model.RememberMe" />
+        <label asp-for="@Model.RememberMe">Remember me</label>
+    </div>
+    <input type="submit" value="Login" />
+    <a asp-action="Index" asp-controller="Register">Sign up</a>
+
+
+</form>
