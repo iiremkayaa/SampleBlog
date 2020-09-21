@@ -3,7 +3,7 @@
     ViewData["Title"] = "SignUp";
 }
 <h1>Register</h1>
-<form asp-action="Index" method="post">
+<form asp-action="Register" asp-controller="Home" method="post">
     <div>
         <label asp-for="@Model.Username"></label>
         <span asp-validation-for="@Model.Username"></span>
@@ -35,5 +35,5 @@
         <input asp-for="@Model.Email" />
     </div>
     <input type="submit" value="Register" />
-    <a asp-action="Index" asp-controller="Login">Sign in</a>
+    <a asp-action="Login" asp-controller="Home">Sign in</a>
 </form>

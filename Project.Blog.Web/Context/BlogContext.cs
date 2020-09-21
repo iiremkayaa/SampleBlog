@@ -11,7 +11,7 @@ namespace Project.Blog.Web.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=(localdb)\\mssqllocaldb;database=BlogIdentity;integrated security=true;");
+            optionsBuilder.UseSqlServer("server=(localdb)\\mssqllocaldb;database=BlogProjectDb;integrated security=true;");
         }
 
     }

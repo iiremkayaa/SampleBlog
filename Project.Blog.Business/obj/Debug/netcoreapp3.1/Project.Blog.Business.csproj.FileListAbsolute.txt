@@ -12,3 +12,17 @@ E:\C#Project\Blog\Project.Blog.Business\bin\Debug\netcoreapp3.1\Project.Blog.Ent
 E:\C#Project\Blog\Project.Blog.Business\bin\Debug\netcoreapp3.1\Project.Blog.DataAccess.pdb
 E:\C#Project\Blog\Project.Blog.Business\bin\Debug\netcoreapp3.1\Project.Blog.Entities.pdb
 E:\C#Project\Blog\Project.Blog.Business\obj\Debug\netcoreapp3.1\Project.Blog.Business.csproj.CopyComplete
+C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Business\bin\Debug\netcoreapp3.1\Project.Blog.Business.deps.json
+C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Business\bin\Debug\netcoreapp3.1\Project.Blog.Business.dll
+C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Business\bin\Debug\netcoreapp3.1\Project.Blog.Business.pdb
+C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Business\bin\Debug\netcoreapp3.1\Project.Blog.DataAccess.dll
+C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Business\bin\Debug\netcoreapp3.1\Project.Blog.Entities.dll
+C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Business\bin\Debug\netcoreapp3.1\Project.Blog.DataAccess.pdb
+C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Business\bin\Debug\netcoreapp3.1\Project.Blog.Entities.pdb
+C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Business\obj\Debug\netcoreapp3.1\Project.Blog.Business.csprojAssemblyReference.cache
+C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Business\obj\Debug\netcoreapp3.1\Project.Blog.Business.AssemblyInfoInputs.cache
+C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Business\obj\Debug\netcoreapp3.1\Project.Blog.Business.AssemblyInfo.cs
+C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Business\obj\Debug\netcoreapp3.1\Project.Blog.Business.csproj.CoreCompileInputs.cache
+C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Business\obj\Debug\netcoreapp3.1\Project.Blog.Business.csproj.CopyComplete
+C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Business\obj\Debug\netcoreapp3.1\Project.Blog.Business.dll
+C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Business\obj\Debug\netcoreapp3.1\Project.Blog.Business.pdb

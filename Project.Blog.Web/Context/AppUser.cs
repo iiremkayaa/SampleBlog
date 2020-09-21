@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Project.Blog.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;

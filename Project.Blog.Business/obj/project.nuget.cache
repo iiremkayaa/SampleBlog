@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "R0CeSIuM1H7xY+trjwyOkN+ovwx8vA+3Wo0pO9GmtnbpKdQ04t0KE5Kt/z2NRXpQYlvDwDnmx4boE49fFF13VQ==",
+  "dgSpecHash": "GjZDVwKAcdEg47mynABpIYa6d0q/vi59kLLO4wK/+/TyXS0kkj1782lJ/+xUeSNcfbeHdhjsvIA4fy/3UruHkA==",
   "success": true,
-  "projectFilePath": "E:\\C#Project\\Blog\\Project.Blog.Business\\Project.Blog.Business.csproj",
+  "projectFilePath": "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Project.Blog.Business\\Project.Blog.Business.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Irem\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Irem\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",

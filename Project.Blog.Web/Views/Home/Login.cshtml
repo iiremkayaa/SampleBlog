@@ -4,7 +4,7 @@
 }
 
 <h1>SignIn</h1>
-<form asp-action="Index" method="post">
+<form asp-action="Login" asp-controller="Home" method="post">
     <div>
         <label asp-for="@Model.Username"></label>
         <span asp-validation-for="@Model.Username"></span>
@@ -20,7 +20,7 @@
         <label asp-for="@Model.RememberMe">Remember me</label>
     </div>
     <input type="submit" value="Login" />
-    <a asp-action="Index" asp-controller="Register">Sign up</a>
+    <a asp-action="Register" asp-controller="Home">Sign up</a>
 
 
 </form>

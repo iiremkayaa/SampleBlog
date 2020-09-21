@@ -6,7 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="CategoryDtos\" />
+    <Compile Remove="CategoryDtos\**" />
+    <EmbeddedResource Remove="CategoryDtos\**" />
+    <None Remove="CategoryDtos\**" />
   </ItemGroup>
 
 </Project>
