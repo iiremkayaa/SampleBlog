@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Project.Blog.Business.Interfaces
 {
-    public interface IUserService :IGenericService<User>
+    public interface IUserService 
     {
-        Task<User> FindByUsernameAsync(string username);
 
     }
 }

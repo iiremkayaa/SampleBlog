@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Mapping;
 using Project.Blog.Entities.Concrete;
 using System;
@@ -7,7 +9,7 @@ using System.Text;
 
 namespace Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Context
 {
-    public class BlogContext :DbContext
+    public class BlogContext :IdentityDbContext<User,Role,int>
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -19,8 +21,15 @@ namespace Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Context
             modelBuilder.ApplyConfiguration(new CommentMap());
             modelBuilder.ApplyConfiguration(new SharingMap());
             modelBuilder.ApplyConfiguration(new UserMap());
+            /*modelBuilder.Ignore<IdentityUserLogin<int>>();
+            modelBuilder.Ignore<IdentityUserRole<int>>();
+            modelBuilder.Ignore<IdentityUserClaim<int>>();
+            modelBuilder.Ignore<IdentityUserToken<int>>();
+            modelBuilder.Ignore<IdentityUser<int>>();*/
+            base.OnModelCreating(modelBuilder);
+           
         }
-        public DbSet<User> Users { get; set; }
+       
         public DbSet<Sharing> Sharings { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Comment> Comments { get; set; }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Project.Blog.DataAccess.Interfaces
 {
-    public interface IUserRepository : IGenericRepository<User>
+    public interface IUserRepository 
     {
-        Task<User> GetByUsernameAsync(string username);
+        
 
     }
 }

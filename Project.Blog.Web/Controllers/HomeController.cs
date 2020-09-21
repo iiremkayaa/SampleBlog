@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Project.Blog.Business.Interfaces;
 using Project.Blog.Entities.Concrete;
-using Project.Blog.Web.Context;
 using Project.Blog.Web.Models;
 
 namespace Project.Blog.Web.Controllers
@@ -17,10 +16,10 @@ namespace Project.Blog.Web.Controllers
     public class HomeController : Controller
     {
         private readonly ISharingService _sharingService;
-        private readonly UserManager<AppUser> _userManager;
-        private readonly SignInManager<AppUser> _signInManager;
-        public HomeController(ISharingService sharingService,UserManager<AppUser> userManager,
-            SignInManager<AppUser> signInManager)
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
+        public HomeController(ISharingService sharingService,UserManager<User> userManager,
+            SignInManager<User> signInManager)
         {
             _sharingService = sharingService;
             _userManager = userManager;
@@ -42,8 +41,6 @@ namespace Project.Blog.Web.Controllers
                 };
                 models.Add(model);
             }
-
-
             return View(models);
         }
         [Authorize]
@@ -87,7 +84,7 @@ namespace Project.Blog.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                AppUser user = new AppUser
+                User user = new User
                 {
                     Email = model.Email,
                     Name = model.Name,
@@ -97,7 +94,16 @@ namespace Project.Blog.Web.Controllers
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Login");
+                    var resultSıgnIn = await _signInManager.PasswordSignInAsync(model.Username,model.Password,false,lockoutOnFailure: true);
+                    if (resultSıgnIn.Succeeded)
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Login", "Home");
+                    }
+                    
 
                 }
                 foreach (var error in result.Errors)

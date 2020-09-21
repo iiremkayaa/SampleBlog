@@ -8,19 +8,10 @@ using System.Threading.Tasks;
 
 namespace Project.Blog.Business.Concrete
 {
-    public class UserService :GenericService<User>,IUserService
+    public class UserService 
     {
-        private readonly IGenericRepository<User> _genericRepository;
-        private readonly IUserRepository _userRepository; 
-        public UserService(IGenericRepository<User> genericRepository,IUserRepository userRepository) : base(genericRepository)
-        {
-            _genericRepository = genericRepository;
-            _userRepository = userRepository;
-        }
+        
 
-        public async Task<User> FindByUsernameAsync(string username)
-        {
-            return await _userRepository.GetByUsernameAsync(username);
-        }
+        
     }
 }

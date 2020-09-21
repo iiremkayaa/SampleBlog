@@ -14,7 +14,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Project.Blog.Business.Containers.MicrosoftIoC;
 using Project.Blog.Business.StringInfos;
-using Project.Blog.Web.Context;
+using Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Context;
+using Project.Blog.Entities.Concrete;
 using Project.Blog.Web.CustomValidator;
 
 namespace Project.Blog.Web
@@ -37,7 +38,7 @@ namespace Project.Blog.Web
             
             services.AddControllersWithViews();
             services.AddDbContext<BlogContext>();
-            services.AddIdentity<AppUser, AppRole>(opt =>
+            services.AddIdentity<User, Role>(opt =>
             {
                 opt.Password.RequireDigit = false;
                 opt.Password.RequireLowercase = false;
@@ -50,7 +51,7 @@ namespace Project.Blog.Web
             }).AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<BlogContext>();
             services.ConfigureApplicationCookie(opt =>
             {
-                opt.LoginPath = new PathString("/Login");
+                opt.LoginPath = new PathString("/Home/Login");
                 opt.Cookie.HttpOnly = true;
                 opt.Cookie.Name = "BlogCookie";
                 opt.Cookie.SameSite = SameSiteMode.Strict;
