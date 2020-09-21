@@ -4,27 +4,26 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Project.Blog.Web.Context;
 using Project.Blog.Web.Models;
 
 namespace Project.Blog.Web.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly SignInManager<AppUser> _singInManager;
+       /* private readonly SignInManager<AppUser> _singInManager;
         public LoginController(SignInManager<AppUser> signInManager)
         {
             _singInManager = signInManager;
         }
-        /*public IActionResult Index()
+        public IActionResult Index()
         {
             return View();
         }*/
         public IActionResult Index()
         {
-            return View(new UserLoginModel());
+            return View(/*new UserLoginModel()*/);
         }
-        [HttpPost]
+        /*[HttpPost]
         public async Task<IActionResult> Index(UserLoginModel model)
         {
             if (ModelState.IsValid)
@@ -42,6 +41,6 @@ namespace Project.Blog.Web.Controllers
                 ModelState.AddModelError("", "Username or password is incorrect.");
             }
             return View(model);
-        }
+        }*/
     }
 }

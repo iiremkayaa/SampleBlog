@@ -1,0 +1,45 @@
+﻿@model UserRegisterModel
+@{
+    ViewBag.Title = "Register";
+}
+<h1>Register</h1>
+
+<form method="post" asp-controller="/Account" asp-action="Register">
+
+    <div>
+        <label asp-for="@Model.Username"></label>
+        <input asp-for="@Model.Username" />
+        <span asp-validation-for="@Model.Username"></span>
+    </div>
+
+    <div>
+        <label asp-for="@Model.Password"></label>
+        <input asp-for="@Model.Password" />
+        <span asp-validation-for="@Model.Password"></span>
+    </div>
+
+    <div>
+        <label asp-for="@Model.ConfirmPassword"></label>
+        <input asp-for="@Model.ConfirmPassword" />
+        <span asp-validation-for="@Model.ConfirmPassword"></span>
+    </div>
+    <div>
+        <label asp-for="@Model.Name"></label>
+        <input asp-for="@Model.Name" />
+        <span asp-validation-for="@Model.Name"></span>
+    </div>
+    <div>
+        <label asp-for="@Model.LastName"></label>
+        <input asp-for="@Model.LastName" />
+        <span asp-validation-for="@Model.LastName"></span>
+    </div>
+    <div>
+        <label asp-for="@Model.Email"></label>
+        <input asp-for="@Model.Email" />
+        <span asp-validation-for="@Model.Email"></span>
+    </div>
+    <div>
+        <input type="submit" value="Register" />
+    </div>
+
+</form>

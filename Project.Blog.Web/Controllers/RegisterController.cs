@@ -5,19 +5,19 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Project.Blog.Business.Interfaces;
-using Project.Blog.Web.Context;
+
 using Project.Blog.Web.Models;
 
 namespace Project.Blog.Web.Controllers
 {
     public class RegisterController : Controller
     {
-        private readonly UserManager<AppUser> _userManager;
+        /*private readonly UserManager<AppUser> _userManager;
         public RegisterController(UserManager<AppUser> userManager)
         {
             _userManager = userManager;
 
-        }
+        }*/
         /*private readonly IUserService _userService;
         public RegisterController(IUserService userService)
         {
@@ -31,7 +31,7 @@ namespace Project.Blog.Web.Controllers
         {
             return View(new UserRegisterModel());
         }
-        [HttpPost]
+        /*[HttpPost]
         public async Task<IActionResult> Index(UserRegisterModel model)
         {
             if (ModelState.IsValid)
@@ -56,6 +56,6 @@ namespace Project.Blog.Web.Controllers
 
             }
             return View(model);
-        }
+        }*/
     }
 }

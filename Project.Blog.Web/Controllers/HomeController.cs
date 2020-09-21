@@ -12,6 +12,7 @@ using Project.Blog.Web.Models;
 
 namespace Project.Blog.Web.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ISharingService _sharingService;

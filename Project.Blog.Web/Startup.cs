@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -14,7 +15,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Project.Blog.Business.Containers.MicrosoftIoC;
 using Project.Blog.Business.StringInfos;
-using Project.Blog.Web.Context;
+using Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Context;
 using Project.Blog.Web.CustomValidator;
 
 namespace Project.Blog.Web
@@ -36,29 +37,14 @@ namespace Project.Blog.Web
             services.AddDependencies();
             
             services.AddControllersWithViews();
-            services.AddDbContext<BlogContext>();
-            services.AddIdentity<AppUser, AppRole>(opt =>
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(options =>
             {
-                opt.Password.RequireDigit = false;
-                opt.Password.RequireLowercase = false;
-                opt.Password.RequiredLength = 1;
-                opt.Password.RequireNonAlphanumeric = false;
-                opt.Password.RequireUppercase = false;
-                opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
-                opt.Lockout.MaxFailedAccessAttempts = 3; // maximum number of failed attempts before the lockdown
-
-            }).AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<BlogContext>();
-            services.ConfigureApplicationCookie(opt =>
-            {
-                opt.LoginPath = new PathString("/Login");
-                opt.Cookie.HttpOnly = true;
-                opt.Cookie.Name = "BlogCookie";
-                opt.Cookie.SameSite = SameSiteMode.Strict;
-                opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
-                opt.ExpireTimeSpan = TimeSpan.FromDays(20);
+                options.LoginPath = "/Login/";
             });
-            //services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<BlogContext>();
-            
+            services.AddDbContext<BlogContext>();
+
+
 
         }
 
