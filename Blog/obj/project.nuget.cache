@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YTizk58k56IzDVpOHEG9K+u5NEggxfCtcHzGD2Fh60cKPClBUxhepCW8cHP2mgldA7JX1UGFoOIV5D5TWF+C/A==",
+  "dgSpecHash": "HMznuKnm/+WlRIHzaxHZYvDo/QbpTSM2RJPLOr5xIo8BZ+uTryK2c245e0xfyqPqiEmuK6xJu7tgC9empfLEpg==",
   "success": true,
-  "projectFilePath": "E:\\C#Project\\Blog\\Blog\\Project.Blog.Entities.csproj",
+  "projectFilePath": "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Blog\\Project.Blog.Entities.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

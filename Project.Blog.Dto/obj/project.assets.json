@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\C#Project\\Blog\\Project.Blog.Dto\\Project.Blog.Dto.csproj",
+      "projectUniqueName": "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Project.Blog.Dto\\Project.Blog.Dto.csproj",
       "projectName": "Project.Blog.Dto",
-      "projectPath": "E:\\C#Project\\Blog\\Project.Blog.Dto\\Project.Blog.Dto.csproj",
+      "projectPath": "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Project.Blog.Dto\\Project.Blog.Dto.csproj",
       "packagesPath": "C:\\Users\\Irem\\.nuget\\packages\\",
-      "outputPath": "E:\\C#Project\\Blog\\Project.Blog.Dto\\obj\\",
+      "outputPath": "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Project.Blog.Dto\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Irem\\AppData\\Roaming\\NuGet\\NuGet.Config",

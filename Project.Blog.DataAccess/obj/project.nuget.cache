@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zfI34+T0Dl91Ml6n/xwmpsHEfQnV9qjorfFEXgLTukKhuMWYVg/10Ib1lpjbr99chLN6RSFmIt9phEgJ12Ol9Q==",
+  "dgSpecHash": "PYJ0RWNVAG3rhMDWYOa+MXdAobjoTVoUgDBmZsLv2nltsMTZ4936eAI6ILEBV5Evj8SQ0k/K1xi2i6NsjGuQSA==",
   "success": true,
-  "projectFilePath": "E:\\C#Project\\Blog\\Project.Blog.DataAccess\\Project.Blog.DataAccess.csproj",
+  "projectFilePath": "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Project.Blog.DataAccess\\Project.Blog.DataAccess.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Irem\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Irem\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
