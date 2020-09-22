@@ -322,7 +322,6 @@ C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\obj\Debug\netcoreapp3.1\
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\CategoryList\Default.cshtml.g.cs
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
-C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\obj\Debug\netcoreapp3.1\Razor\Views\Sharing\Index.cshtml.g.cs
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\obj\Debug\netcoreapp3.1\Project.Blog.Web.RazorTargetAssemblyInfo.cache
@@ -336,3 +335,4 @@ C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\obj\Debug\netcoreapp3.1\
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\obj\Debug\netcoreapp3.1\Project.Blog.Web.genruntimeconfig.cache
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Register.cshtml.g.cs
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Login.cshtml.g.cs
+C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AccountLayout.cshtml.g.cs

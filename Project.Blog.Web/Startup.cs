@@ -51,7 +51,7 @@ namespace Project.Blog.Web
             }).AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<BlogContext>();
             services.ConfigureApplicationCookie(opt =>
             {
-                opt.LoginPath = new PathString("/Home/Login");
+                opt.LoginPath = new PathString("/login");
                 opt.Cookie.HttpOnly = true;
                 opt.Cookie.Name = "BlogCookie";
                 opt.Cookie.SameSite = SameSiteMode.Strict;

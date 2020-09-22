@@ -8,7 +8,6 @@ namespace Project.Blog.DataAccess.Interfaces
 {
     public interface IUserRepository 
     {
-        
 
     }
 }

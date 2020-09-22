@@ -24,6 +24,7 @@ namespace Project.Blog.Web.Controllers
             _sharingService = sharingService;
             _userManager = userManager;
             _signInManager = signInManager;
+
         }
         [Authorize]
         public async Task<IActionResult> IndexAsync()
@@ -57,7 +58,7 @@ namespace Project.Blog.Web.Controllers
             };
             return View(model);
         }
-        
+        [Route("/login")]
         public IActionResult Login()
         {
             return View();
@@ -65,7 +66,7 @@ namespace Project.Blog.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(UserLoginModel model)
         {
-            
+           
             var result = await _signInManager.PasswordSignInAsync(model.Username,
                            model.Password, model.RememberMe, lockoutOnFailure: true);
             if (result.Succeeded)
@@ -74,7 +75,8 @@ namespace Project.Blog.Web.Controllers
             }
             return View();
         }
-        
+       
+
         public IActionResult Register()
         {
             return View();

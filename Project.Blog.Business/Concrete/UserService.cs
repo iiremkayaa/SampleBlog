@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Project.Blog.Business.Concrete
 {
-    public class UserService 
+    public class UserService  :IUserService
     {
         
 

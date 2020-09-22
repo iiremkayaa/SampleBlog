@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Repositories
 {
-    public class UserRepository 
+    public class UserRepository : IUserRepository
     {
        
     }
