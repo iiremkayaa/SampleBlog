@@ -1,12 +1,21 @@
-﻿using Project.Blog.DataAccess.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Context;
+using Project.Blog.DataAccess.Interfaces;
 using Project.Blog.Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Repositories
 {
-    public class SharingRepository :GenericRepository<Sharing> ,ISharingRepository
+    public class SharingRepository : GenericRepository<Sharing>, ISharingRepository
     {
+        public async Task<List<Sharing>> GetAllByCategoryIdAsync(int id)
+        {
+            using var context = new BlogContext();
+            return await context.Set<Sharing>().Where(s => s.CategoryId == id).ToListAsync();
+        }
     }
 }

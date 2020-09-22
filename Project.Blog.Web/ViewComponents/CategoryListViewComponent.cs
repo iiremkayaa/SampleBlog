@@ -12,11 +12,11 @@ namespace Project.Blog.Web.ViewComponents
     public class CategoryListViewComponent :ViewComponent
     {
         private readonly ICategoryService _categoryService;
-        //private readonly IMapper _mapper;
-        public CategoryListViewComponent(ICategoryService categoryService/*,IMapper mapper*/)
+        private readonly ISharingService _sharingService;
+        public CategoryListViewComponent(ICategoryService categoryService,ISharingService sharingService)
         {
             _categoryService = categoryService;
-            //_mapper = mapper;
+            _sharingService = sharingService;
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
@@ -24,10 +24,12 @@ namespace Project.Blog.Web.ViewComponents
             List<CategoryListModel> models = new List<CategoryListModel>();
             foreach (var item in categories)
             {
+                List<Sharing> sharings = await _sharingService.GetAllByCategoryIdAsync(item.Id);
                 CategoryListModel model = new CategoryListModel
                 {
                     Id = item.Id,
                     Name = item.Name,
+                    Number = sharings.Count
                 };
                 models.Add(model);
             }
