@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Project.Blog.DataAccess.Migrations
 {
-    public partial class UpdatedDb : Migration
+    public partial class AddedColumnToComment : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -178,8 +178,8 @@ namespace Project.Blog.DataAccess.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(maxLength: 100, nullable: false),
                     Description = table.Column<string>(type: "ntext", nullable: true),
-                    UserId = table.Column<int>(nullable: false),
-                    CategoryId = table.Column<int>(nullable: false),
+                    UserId = table.Column<int>(nullable: true),
+                    CategoryId = table.Column<int>(nullable: true),
                     SharingDate = table.Column<DateTime>(nullable: false, defaultValueSql: "getdate()")
                 },
                 constraints: table =>
@@ -190,13 +190,13 @@ namespace Project.Blog.DataAccess.Migrations
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Sharings_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -209,17 +209,24 @@ namespace Project.Blog.DataAccess.Migrations
                     CommentDate = table.Column<DateTime>(nullable: false),
                     NumberOfLikes = table.Column<int>(nullable: false, defaultValue: 0),
                     LastModificationDate = table.Column<DateTime>(nullable: false, defaultValueSql: "getdate()"),
-                    SharingId = table.Column<int>(nullable: false)
+                    SharingId = table.Column<int>(nullable: true),
+                    CommentOwnerId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Comments", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_Comments_AspNetUsers_CommentOwnerId",
+                        column: x => x.CommentOwnerId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_Comments_Sharings_SharingId",
                         column: x => x.SharingId,
                         principalTable: "Sharings",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -260,6 +267,11 @@ namespace Project.Blog.DataAccess.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comments_CommentOwnerId",
+                table: "Comments",
+                column: "CommentOwnerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_SharingId",

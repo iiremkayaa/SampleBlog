@@ -18,12 +18,14 @@ namespace Project.Blog.Web.Controllers
         private readonly ISharingService _sharingService;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        public HomeController(ISharingService sharingService,UserManager<User> userManager,
+        private readonly ICommentService _commentService;
+        public HomeController(ICommentService commentService,ISharingService sharingService,UserManager<User> userManager,
             SignInManager<User> signInManager)
         {
             _sharingService = sharingService;
             _userManager = userManager;
             _signInManager = signInManager;
+            _commentService = commentService;
 
         }
         [Authorize]
@@ -56,6 +58,7 @@ namespace Project.Blog.Web.Controllers
                     Description = sharing.Description,
                     SharingDate = sharing.SharingDate,
             };
+            ViewBag.Comments=_commentService.GetAllBySharingIdAsync(id);
             return View(model);
         }
         [Route("/login")]

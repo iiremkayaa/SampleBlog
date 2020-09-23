@@ -10,8 +10,8 @@ using Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Context;
 namespace Project.Blog.DataAccess.Migrations
 {
     [DbContext(typeof(BlogContext))]
-    [Migration("20200921194559_UpdatedDb")]
-    partial class UpdatedDb
+    [Migration("20200923151812_AddedColumnToComment")]
+    partial class AddedColumnToComment
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -153,6 +153,9 @@ namespace Project.Blog.DataAccess.Migrations
                     b.Property<DateTime>("CommentDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("CommentOwnerId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .HasColumnType("ntext");
 
@@ -166,10 +169,12 @@ namespace Project.Blog.DataAccess.Migrations
                         .HasColumnType("int")
                         .HasDefaultValue(0);
 
-                    b.Property<int>("SharingId")
+                    b.Property<int?>("SharingId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CommentOwnerId");
 
                     b.HasIndex("SharingId");
 
@@ -214,7 +219,7 @@ namespace Project.Blog.DataAccess.Migrations
                         .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -230,7 +235,7 @@ namespace Project.Blog.DataAccess.Migrations
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -373,26 +378,24 @@ namespace Project.Blog.DataAccess.Migrations
 
             modelBuilder.Entity("Project.Blog.Entities.Concrete.Comment", b =>
                 {
+                    b.HasOne("Project.Blog.Entities.Concrete.User", "CommentOwner")
+                        .WithMany("Comments")
+                        .HasForeignKey("CommentOwnerId");
+
                     b.HasOne("Project.Blog.Entities.Concrete.Sharing", "Sharing")
                         .WithMany("Comments")
-                        .HasForeignKey("SharingId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("SharingId");
                 });
 
             modelBuilder.Entity("Project.Blog.Entities.Concrete.Sharing", b =>
                 {
                     b.HasOne("Project.Blog.Entities.Concrete.Category", "Category")
                         .WithMany("Sharings")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CategoryId");
 
                     b.HasOne("Project.Blog.Entities.Concrete.User", "User")
                         .WithMany("Sharings")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }
