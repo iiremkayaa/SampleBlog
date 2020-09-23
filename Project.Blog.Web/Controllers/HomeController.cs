@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 using Project.Blog.Business.Interfaces;
 using Project.Blog.Entities.Concrete;
 using Project.Blog.Web.Models;
-
+using System.Security.Principal;
 namespace Project.Blog.Web.Controllers
 {
     public class HomeController : Controller
@@ -19,6 +19,7 @@ namespace Project.Blog.Web.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly ICommentService _commentService;
+        //private readonly IGenericService<>
         public HomeController(ICommentService commentService,ISharingService sharingService,UserManager<User> userManager,
             SignInManager<User> signInManager)
         {
@@ -52,44 +53,68 @@ namespace Project.Blog.Web.Controllers
         {
 
             Sharing sharing = await _sharingService.FindByIdAsync(id);
-            string ownerId = sharing.UserId.ToString();
-            var user = await _userManager.FindByIdAsync(ownerId);
-            SharingListModel model = new SharingListModel
+            if (sharing != null)
             {
+                int? ownerId = sharing.UserId;
+                User user = new User();
+                user = await _userManager.FindByIdAsync(ownerId.ToString());
+                SharingListModel model = new SharingListModel
+                {
                     Id = sharing.Id,
                     Title = sharing.Title,
                     Description = sharing.Description,
                     SharingDate = sharing.SharingDate,
-                    UserName=user.UserName,
-            };
-            List<Comment> comments=await _commentService.GetAllBySharingIdAsync(id);
-            List<CommentListModel> commentModels = new List<CommentListModel>();
-            foreach (var item in comments)
-            {
-                
-                if (item.CommentOwnerId != null)
+                    UserName = user.UserName,
+                };
+                List<Comment> comments = await _commentService.GetAllBySharingIdAsync(id);
+                List<CommentListModel> commentModels = new List<CommentListModel>();
+                foreach (var item in comments)
                 {
-                    string userId = item.CommentOwnerId.ToString();
-                    var commentUser = await _userManager.FindByIdAsync(userId);
-                    CommentListModel commentModel = new CommentListModel
+
+                    if (item.CommentOwnerId != null)
                     {
-                        Id = item.Id,
-                        Description = item.Description,
-                        CommentDate = item.CommentDate,
-                        NumberOfLikes = item.NumberOfLikes,
-                        LastModificationDate = item.LastModificationDate,
-                        UserName = commentUser.UserName
+                        string userId = item.CommentOwnerId.ToString();
+                        var commentUser = await _userManager.FindByIdAsync(userId);
+                        CommentListModel commentModel = new CommentListModel
+                        {
+                            Id = item.Id,
+                            Description = item.Description,
+                            CommentDate = item.CommentDate,
+                            NumberOfLikes = item.NumberOfLikes,
+                            LastModificationDate = item.LastModificationDate,
+                            UserName = commentUser.UserName
 
-                    };
-                    commentModels.Add(commentModel);
+                        };
+                        commentModels.Add(commentModel);
+                    }
+
+
                 }
-                
-                
-            }
 
-            ViewBag.Comments = commentModels;
-            return View(model);
+                ViewBag.Comments = commentModels;
+                return View(model);
+            }
+            return BadRequest("");
+            
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Detail(string description, int sharingId)
+        {
+            var currentUserId = await GetCurrentUserAsync();
+            Comment comment = new Comment
+            {
+                Description = description,
+                CommentDate = DateTime.Now,
+                NumberOfLikes = 0,
+                LastModificationDate = DateTime.Now,
+                CommentOwnerId = currentUserId?.Id,
+                SharingId = sharingId
+            };
+            await _commentService.AddAsync(comment);
+            return RedirectToAction("Detail", sharingId);
+        }
+
         [Route("/login")]
         public IActionResult Login()
         {
@@ -148,7 +173,10 @@ namespace Project.Blog.Web.Controllers
             }
             return View(model);
         }
-
+        
+        private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+        
+        
 
     }
 }

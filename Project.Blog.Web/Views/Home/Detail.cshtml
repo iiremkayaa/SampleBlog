@@ -13,6 +13,7 @@
                         <h5 class="mt-0">@comment.UserName</h5>
                          @comment.Description
                     </div>
+
                 </div>
             }
 
@@ -49,11 +50,14 @@
 <div class="card my-4">
     <h5 class="card-header">Leave a Comment:</h5>
     <div class="card-body">
-        <form>
+        <form asp-action="Detail" asp-controller="Home" method="post">
             <div class="form-group">
-                <textarea class="form-control" rows="3"></textarea>
+                <textarea name="description" class="form-control" rows="3"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div>
+                <input name="sharingId" type="hidden" value="@Model.Id" />
+            </div>
+            <input type="submit" class="btn btn-primary" value="Submit">
         </form>
     </div>
 </div>
