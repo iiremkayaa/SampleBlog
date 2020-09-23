@@ -35,14 +35,15 @@ namespace Project.Blog.Web.Controllers
             List<SharingListModel> models = new List<SharingListModel>();
             foreach (var item in sharings)
             {
-                SharingListModel model = new SharingListModel
-                {
-                    Id = item.Id,
-                    Title = item.Title,
-                    Description=item.Description,
-                    SharingDate=item.SharingDate
-                };
-                models.Add(model);
+                    SharingListModel model = new SharingListModel
+                    {
+                        Id = item.Id,
+                        Title = item.Title,
+                        Description = item.Description,
+                        SharingDate = item.SharingDate,
+                    };
+                    models.Add(model);
+                    
             }
             return View(models);
         }
@@ -51,14 +52,42 @@ namespace Project.Blog.Web.Controllers
         {
 
             Sharing sharing = await _sharingService.FindByIdAsync(id);
+            string ownerId = sharing.UserId.ToString();
+            var user = await _userManager.FindByIdAsync(ownerId);
             SharingListModel model = new SharingListModel
             {
                     Id = sharing.Id,
                     Title = sharing.Title,
                     Description = sharing.Description,
                     SharingDate = sharing.SharingDate,
+                    UserName=user.UserName,
             };
-            ViewBag.Comments=_commentService.GetAllBySharingIdAsync(id);
+            List<Comment> comments=await _commentService.GetAllBySharingIdAsync(id);
+            List<CommentListModel> commentModels = new List<CommentListModel>();
+            foreach (var item in comments)
+            {
+                
+                if (item.CommentOwnerId != null)
+                {
+                    string userId = item.CommentOwnerId.ToString();
+                    var commentUser = await _userManager.FindByIdAsync(userId);
+                    CommentListModel commentModel = new CommentListModel
+                    {
+                        Id = item.Id,
+                        Description = item.Description,
+                        CommentDate = item.CommentDate,
+                        NumberOfLikes = item.NumberOfLikes,
+                        LastModificationDate = item.LastModificationDate,
+                        UserName = commentUser.UserName
+
+                    };
+                    commentModels.Add(commentModel);
+                }
+                
+                
+            }
+
+            ViewBag.Comments = commentModels;
             return View(model);
         }
         [Route("/login")]
