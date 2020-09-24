@@ -31,18 +31,24 @@ namespace Project.Blog.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(SharingPostModel model)
         {
-            var currentUser = await GetCurrentUserAsync();
-            Sharing sharing = new Sharing
+            if (ModelState.IsValid)
             {
-                Title=model.Title,
-                Description=model.Description,
-                CategoryId=model.CategoryId,
-                SharingDate=DateTime.Now,
-                UserId=currentUser?.Id
-            };
-            await _sharingService.AddAsync(sharing);
-
+                var currentUser = await GetCurrentUserAsync();
+                Sharing sharing = new Sharing
+                {
+                    Title = model.Title,
+                    Description = model.Description,
+                    CategoryId = model.CategoryId,
+                    SharingDate = DateTime.Now,
+                    UserId = currentUser?.Id
+                };
+                await _sharingService.AddAsync(sharing);
+                return RedirectToAction("Index", "Home");
+               
+                
+            }
             return View();
+
         }
         private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
