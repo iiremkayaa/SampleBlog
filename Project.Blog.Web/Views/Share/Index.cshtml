@@ -1,0 +1,32 @@
+﻿@model SharingPostModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+}
+
+<div class="card my-4">
+    <h5 class="card-header">Leave a Sharing:</h5>
+    <div class="card-body">
+        <form asp-action="Index" asp-controller="Share" method="post">
+            <div class="form-group">
+                <label asp-for="@Model.Title">Title</label>
+                <input asp-for="@Model.Title" type="text" class="form-control" >
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.CategoryId">Category</label>
+                <select class="form-control" asp-for="@Model.CategoryId" >
+                    <option value="1">Book</option>
+                    <option value="2">Movie</option>
+                    <option value="3">Music</option>
+                    <option value="4">Travel</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <textarea asp-for="@Model.Description" name="description" class="form-control" rows="5"></textarea>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Submit">
+        </form>
+    </div>
+</div>
+
