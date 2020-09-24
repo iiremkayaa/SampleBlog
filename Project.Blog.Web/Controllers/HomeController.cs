@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Project.Blog.Business.Interfaces;
 using Project.Blog.Entities.Concrete;
 using Project.Blog.Web.Models;
@@ -19,8 +18,8 @@ namespace Project.Blog.Web.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly ICommentService _commentService;
-        //private readonly IGenericService<>
-        public HomeController(ICommentService commentService,ISharingService sharingService,UserManager<User> userManager,
+       
+            public HomeController(ICommentService commentService,ISharingService sharingService,UserManager<User> userManager,
             SignInManager<User> signInManager)
         {
             _sharingService = sharingService;
@@ -99,14 +98,14 @@ namespace Project.Blog.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Detail(string description, int sharingId)
         {
-            var currentUserId = await GetCurrentUserAsync();
+            var currentUser = await GetCurrentUserAsync();
             Comment comment = new Comment
             {
                 Description = description,
                 CommentDate = DateTime.Now,
                 NumberOfLikes = 0,
                 LastModificationDate = DateTime.Now,
-                CommentOwnerId = currentUserId?.Id,
+                CommentOwnerId = currentUser?.Id,
                 SharingId = sharingId
             };
             await _commentService.AddAsync(comment);

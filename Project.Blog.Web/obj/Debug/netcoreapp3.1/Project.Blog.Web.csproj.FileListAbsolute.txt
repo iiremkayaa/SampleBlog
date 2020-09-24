@@ -605,3 +605,4 @@ C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\bin\Debug\netcoreapp3.1\
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\obj\Debug\netcoreapp3.1\Project.Blog.Web.csproj.CoreCompileInputs.cache
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\obj\Debug\netcoreapp3.1\Project.Blog.Web.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\obj\Debug\netcoreapp3.1\Project.Blog.Web.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\obj\Debug\netcoreapp3.1\Razor\Views\Share\Index.cshtml.g.cs
