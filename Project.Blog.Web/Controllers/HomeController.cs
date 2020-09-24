@@ -29,7 +29,6 @@ namespace Project.Blog.Web.Controllers
             _commentService = commentService;
 
         }
-        [Authorize]
         public async Task<IActionResult> IndexAsync()
         {
             List<Sharing> sharings = await _sharingService.GetAllAsync();
@@ -48,7 +47,6 @@ namespace Project.Blog.Web.Controllers
             }
             return View(models);
         }
-        [Authorize]
         public async Task<IActionResult> Detail(int id)
         {
 
@@ -97,7 +95,7 @@ namespace Project.Blog.Web.Controllers
             return BadRequest("");
             
         }
-
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Detail(string description, int sharingId)
         {
@@ -115,7 +113,6 @@ namespace Project.Blog.Web.Controllers
             return RedirectToAction("Detail", sharingId);
         }
 
-        [Route("/login")]
         public IActionResult Login()
         {
             return View();
