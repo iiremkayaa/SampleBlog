@@ -27,23 +27,36 @@ namespace Project.Blog.Web.Controllers
             _commentService = commentService;
 
         }
-        public async Task<IActionResult> IndexAsync()
+        public async Task<IActionResult> IndexAsync(int? categoryId)
         {
-            List<Sharing> sharings = await _sharingService.GetAllAsync();
             List<SharingListModel> models = new List<SharingListModel>();
+            List<Sharing> sharings = new List<Sharing>();
+
+            if (categoryId == null)
+            {
+                sharings = await _sharingService.GetAllAsync();
+                
+            }
+            else
+            {
+                sharings = await _sharingService.GetAllByCategoryIdAsync((int)categoryId);
+
+            }
             foreach (var item in sharings)
             {
-                    SharingListModel model = new SharingListModel
-                    {
-                        Id = item.Id,
-                        Title = item.Title,
-                        Description = item.Description,
-                        SharingDate = item.SharingDate,
-                    };
-                    models.Add(model);
-                    
+                SharingListModel model = new SharingListModel
+                {
+                    Id = item.Id,
+                    Title = item.Title,
+                    Description = item.Description,
+                    SharingDate = item.SharingDate,
+                };
+                models.Add(model);
+
             }
             return View(models);
+
+
         }
         public async Task<IActionResult> Detail(int id)
         {
@@ -173,6 +186,7 @@ namespace Project.Blog.Web.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Login");
         }
+       
         private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
         
         
