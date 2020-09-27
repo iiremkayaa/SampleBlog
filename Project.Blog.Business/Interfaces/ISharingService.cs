@@ -9,5 +9,6 @@ namespace Project.Blog.Business.Interfaces
     public interface ISharingService :IGenericService<Sharing>
     {
         Task<List<Sharing>> GetAllByCategoryIdAsync(int id);
+        Task<List<Sharing>> SearchSharingAsync(string key);
     }
 }

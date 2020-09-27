@@ -332,7 +332,6 @@ C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\obj\Debug\netcoreapp3.1\
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\obj\Debug\netcoreapp3.1\Project.Blog.Web.genruntimeconfig.cache
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Register.cshtml.g.cs
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Login.cshtml.g.cs
-C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AccountLayout.cshtml.g.cs
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Antiforgery.dll
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Authentication.Abstractions.dll
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Authentication.Cookies.dll

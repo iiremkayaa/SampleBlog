@@ -9,5 +9,6 @@ namespace Project.Blog.DataAccess.Interfaces
     public interface ISharingRepository :IGenericRepository<Sharing>
     {
         Task<List<Sharing>> GetAllByCategoryIdAsync(int categoryId);
+        Task<List<Sharing>> SearchSharingAsync(string key);
     }
 }

@@ -17,5 +17,11 @@ namespace Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Repositories
             using var context = new BlogContext();
             return await context.Set<Sharing>().Where(s => s.CategoryId == id).ToListAsync();
         }
+
+        public async Task<List<Sharing>> SearchSharingAsync(string key)
+        {
+            using var context = new BlogContext();
+            return await context.Set<Sharing>().Where(s => s.Title.Contains(key) || s.Description.Contains(key)).ToListAsync();
+        }
     }
 }

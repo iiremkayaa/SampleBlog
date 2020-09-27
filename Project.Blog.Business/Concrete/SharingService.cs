@@ -24,5 +24,10 @@ namespace Project.Blog.Business.Concrete
             return await _sharingRepository.GetAllByCategoryIdAsync(id);
            
         }
+
+        public Task<List<Sharing>> SearchSharingAsync(string key)
+        {
+            return _sharingRepository.SearchSharingAsync(key);
+        }
     }
 }
