@@ -90,15 +90,17 @@
 
     <!-- Search Widget -->
     <div class="card my-4">
-        <h5 class="card-header">Search</h5>
-        <div class="card-body">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for...">
-                <span class="input-group-append">
-                    <button class="btn btn-secondary" type="button">Go!</button>
-                </span>
+        <form asp-action="Index" asp-controller="Home" method="GET">
+            <h5 class="card-header">Search</h5>
+            <div class="card-body">
+                <div class="input-group">
+                    <input name="key" type="text" class="form-control" placeholder="">
+                    <span class="input-group-append">
+                        <button class="btn btn-primary" type="submit">Search</button>
+                    </span>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 
     <!-- Categories Widget -->

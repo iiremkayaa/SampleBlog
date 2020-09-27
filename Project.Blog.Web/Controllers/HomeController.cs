@@ -27,21 +27,27 @@ namespace Project.Blog.Web.Controllers
             _commentService = commentService;
 
         }
-        public async Task<IActionResult> IndexAsync(int? categoryId)
+        public async Task<IActionResult> IndexAsync(int? categoryId,string key)
         {
             List<SharingListModel> models = new List<SharingListModel>();
             List<Sharing> sharings = new List<Sharing>();
 
-            if (categoryId == null)
+            if (categoryId == null  && string.IsNullOrWhiteSpace(key))
             {
                 sharings = await _sharingService.GetAllAsync();
                 
+            }
+            else if (!string.IsNullOrWhiteSpace(key))
+            {
+                sharings = await _sharingService.SearchSharingAsync(key);
             }
             else
             {
                 sharings = await _sharingService.GetAllByCategoryIdAsync((int)categoryId);
 
             }
+
+            
             foreach (var item in sharings)
             {
                 SharingListModel model = new SharingListModel

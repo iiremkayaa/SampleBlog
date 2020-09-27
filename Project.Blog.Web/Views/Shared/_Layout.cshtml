@@ -18,6 +18,9 @@
 
 
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 </head>
 
 <body>
@@ -37,24 +40,24 @@
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
-                    
+
                     <li class="nav-item">
                         <a class="nav-link" asp-controller="Share" asp-action="Index">Share</a>
                     </li>
                     <li class="nav-item">
-                            @if (SignInManager.IsSignedIn(User))
-                            {
-                                <a class="nav-link" asp-controller="Home" asp-action="Logout">Logout</a>
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <a class="nav-link" asp-controller="Home" asp-action="Logout">Logout</a>
 
-                            }
-                            else
-                            {
-                                <a class="nav-link" asp-controller="Home" asp-action="Login">Login</a>
+                        }
+                        else
+                        {
+                            <a class="nav-link" asp-controller="Home" asp-action="Login">Login</a>
 
-                            }
+                        }
 
                     </li>
-                    </ul>
+                </ul>
             </div>
         </div>
     </nav>
@@ -79,6 +82,9 @@
     <script src="~/jquery/jquery.min.js"></script>
     <script src="~/twitter-bootstrap/js/bootstrap.bundle.min.js"></script>
 
+
+
+  
 </body>
 
 </html>
