@@ -315,7 +315,6 @@ C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\obj\Debug\netcoreapp3.1\
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\obj\Debug\netcoreapp3.1\Project.Blog.Web.TagHelpers.input.cache
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\obj\Debug\netcoreapp3.1\Project.Blog.Web.TagHelpers.output.cache
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\obj\Debug\netcoreapp3.1\Project.Blog.Web.RazorCoreGenerate.cache
-C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\obj\Debug\netcoreapp3.1\Razor\Views\Auth\Index.cshtml.g.cs
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Detail.cshtml.g.cs
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\CategoryList\Default.cshtml.g.cs

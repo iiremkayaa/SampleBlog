@@ -11,7 +11,7 @@
                     <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
                     <div class="media-body">
                         <h5 class="mt-0">@comment.UserName</h5>
-                         @comment.Description
+                        @comment.Description
                     </div>
 
                 </div>
@@ -20,50 +20,90 @@
         }
     }
 }
-<!-- Title -->
-<h1 class="mt-4">@Model.Title</h1>
-
-<!-- Author -->
-<p class="lead">
-    by
-    <a href="#">@Model.UserName</a>
-</p>
-
-<hr>
-
-<!-- Date/Time -->
-<p>Posted on @Model.SharingDate.ToLongDateString()</p>
-
-<hr>
 
 
 
-<hr>
 
-<!-- Post Content -->
-<p class="lead">@Model.Description</p>
+<!-- Blog Entries Column -->
+<div class="col-md-8">
+
+    <h1 class="my-4">
+    </h1>
+    <div>
+        <!-- Title -->
+        <h1 class="mt-4">@Model.Title</h1>
+
+        <!-- Author -->
+        <p class="lead">
+            by
+            <a href="#">@Model.UserName</a>
+        </p>
+
+        <hr>
+
+        <!-- Date/Time -->
+        <p>Posted on @Model.SharingDate.ToLongDateString()</p>
+
+        <hr>
 
 
-<hr>
 
-<!-- Comments Form -->
-<div class="card my-4">
-    <h5 class="card-header">Leave a Comment:</h5>
-    <div class="card-body">
-        <form asp-action="Detail" asp-controller="Home" method="post">
-            <div class="form-group">
-                <textarea name="description" class="form-control" rows="3"></textarea>
+        <hr>
+
+        <!-- Post Content -->
+        <p class="lead">@Model.Description</p>
+
+
+        <hr>
+
+        <!-- Comments Form -->
+        <div class="card my-4">
+            <h5 class="card-header">Leave a Comment:</h5>
+            <div class="card-body">
+                <form asp-action="Detail" asp-controller="Home" method="post">
+                    <div class="form-group">
+                        <textarea name="description" class="form-control" rows="3"></textarea>
+                    </div>
+                    <div>
+                        <input name="sharingId" type="hidden" value="@Model.Id" />
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Send">
+                </form>
             </div>
-            <div>
-                <input name="sharingId" type="hidden" value="@Model.Id" />
-            </div>
-            <input type="submit" class="btn btn-primary" value="Send">
-        </form>
+        </div>
+
+        <!-- Single Comment -->
+
+        @{
+            GetComments(comments);
+        }
+
     </div>
+
+    <!-- Pagination -->
+
+
 </div>
 
-<!-- Single Comment -->
+<!-- Sidebar Widgets Column -->
+<div class="col-md-4">
 
-@{
-    GetComments(comments);
-}
+    <!-- Search Widget -->
+    <div class="card my-4">
+        <h5 class="card-header">Search</h5>
+        <div class="card-body">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-append">
+                    <button class="btn btn-secondary" type="button">Go!</button>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Categories Widget -->
+    @await Component.InvokeAsync("CategoryList")
+
+
+
+</div>

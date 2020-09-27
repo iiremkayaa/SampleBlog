@@ -1,25 +1,64 @@
 ﻿@model List<SharingListModel>
 
-@foreach (var sharing in Model)
-{
-    <div class="card mb-4">
-        <div class="card-body">
-            <h2 class="card-title">@sharing.Title</h2>
-            <p class="card-text">@sharing.Description</p>
-            <a asp-action="Detail" asp-route-id="@sharing.Id" class="btn btn-primary">See Comments</a>
-        </div>
-        <div class="card-footer text-muted">
-            Posted on @sharing.SharingDate.ToLongDateString()
-        </div>
 
+
+
+
+
+<div class="col-md-8">
+
+    <h1 class="my-4">
+    </h1>
+    <div>
+        @foreach (var sharing in Model)
+        {
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title">@sharing.Title</h2>
+                    <p class="card-text">@sharing.Description</p>
+                    <a asp-action="Detail" asp-route-id="@sharing.Id" class="btn btn-primary">See Comments</a>
+                </div>
+                <div class="card-footer text-muted">
+                    Posted on @sharing.SharingDate.ToLongDateString()
+                </div>
+
+            </div>
+        }
+
+        <ul class="pagination justify-content-center mb-4">
+            <li class="page-item">
+                <a class="page-link" href="#">&larr; Older</a>
+            </li>
+            <li class="page-item disabled">
+                <a class="page-link" href="#">Newer &rarr;</a>
+            </li>
+        </ul>
     </div>
-}
 
-<ul class="pagination justify-content-center mb-4">
-    <li class="page-item">
-        <a class="page-link" href="#">&larr; Older</a>
-    </li>
-    <li class="page-item disabled">
-        <a class="page-link" href="#">Newer &rarr;</a>
-    </li>
-</ul>
+    <!-- Pagination -->
+
+
+</div>
+
+<!-- Sidebar Widgets Column -->
+<div class="col-md-4">
+
+    <!-- Search Widget -->
+    <div class="card my-4">
+        <h5 class="card-header">Search</h5>
+        <div class="card-body">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-append">
+                    <button class="btn btn-secondary" type="button">Go!</button>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Categories Widget -->
+    @await Component.InvokeAsync("CategoryList")
+
+
+
+</div>
