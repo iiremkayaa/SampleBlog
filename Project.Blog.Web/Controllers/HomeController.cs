@@ -50,12 +50,16 @@ namespace Project.Blog.Web.Controllers
             
             foreach (var item in sharings)
             {
+                string userId = item.UserId.ToString();
+                var user = await _userManager.FindByIdAsync(userId);
                 SharingListModel model = new SharingListModel
                 {
                     Id = item.Id,
                     Title = item.Title,
                     Description = item.Description,
                     SharingDate = item.SharingDate,
+                    UserName=user.UserName,
+                    
                 };
                 models.Add(model);
 
