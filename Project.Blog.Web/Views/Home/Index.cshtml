@@ -6,10 +6,8 @@
 
 
 <div class="col-md-8">
-
-    <h1 class="my-4">
-    </h1>
-    <div>
+   
+    <div class="my-4">
         @foreach (var sharing in Model)
         {
             <div class="card mb-4">
@@ -19,7 +17,7 @@
                     <a asp-action="Detail" asp-route-id="@sharing.Id" class="btn btn-primary">See Comments</a>
                 </div>
                 <div class="card-footer text-muted">
-                    Posted on @sharing.SharingDate.ToLongDateString()
+                    Posted on @sharing.SharingDate.ToString("MM/dd/yyyy h:mm ")
                 </div>
 
             </div>
