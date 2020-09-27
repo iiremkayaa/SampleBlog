@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Mvc;
 using Project.Blog.Business.Interfaces;
 using Project.Blog.Entities.Concrete;
 using Project.Blog.Web.Models;
-using System.Security.Principal;
 namespace Project.Blog.Web.Controllers
 {
     public class HomeController : Controller
@@ -169,7 +168,11 @@ namespace Project.Blog.Web.Controllers
             }
             return View(model);
         }
-        
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Login");
+        }
         private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
         
         
