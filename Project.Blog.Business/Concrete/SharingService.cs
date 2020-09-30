@@ -25,6 +25,11 @@ namespace Project.Blog.Business.Concrete
            
         }
 
+        public async Task<List<Sharing>> GetAllSortedByDateAsync()
+        {
+            return await _sharingRepository.GetAllByDateAsync();
+        }
+
         public Task<List<Sharing>> SearchSharingAsync(string key)
         {
             return _sharingRepository.SearchSharingAsync(key);

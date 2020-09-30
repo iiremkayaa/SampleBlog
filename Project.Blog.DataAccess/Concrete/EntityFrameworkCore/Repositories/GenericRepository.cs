@@ -4,6 +4,8 @@ using Project.Blog.DataAccess.Interfaces;
 using Project.Blog.Entities.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -37,9 +39,10 @@ namespace Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Repositories
 
         public async Task<List<T>> GetAllAsync()
         {
-            using var context = new BlogContext();
+            using var context = new BlogContext();           
             return await context.Set<T>().ToListAsync();
         }
+        
 
         public async Task UpdateAsync(T entity)
         {
@@ -47,7 +50,6 @@ namespace Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Repositories
             context.Update(entity);
             await context.SaveChangesAsync();
         }
-
 
        
     }

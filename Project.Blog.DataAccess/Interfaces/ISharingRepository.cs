@@ -10,5 +10,6 @@ namespace Project.Blog.DataAccess.Interfaces
     {
         Task<List<Sharing>> GetAllByCategoryIdAsync(int categoryId);
         Task<List<Sharing>> SearchSharingAsync(string key);
+        Task<List<Sharing>> GetAllByDateAsync();
     }
 }

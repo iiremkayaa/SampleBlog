@@ -18,10 +18,22 @@ namespace Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Repositories
             return await context.Set<Sharing>().Where(s => s.CategoryId == id).ToListAsync();
         }
 
+       
+
         public async Task<List<Sharing>> SearchSharingAsync(string key)
         {
             using var context = new BlogContext();
             return await context.Set<Sharing>().Where(s => s.Title.Contains(key) || s.Description.Contains(key)).ToListAsync();
+        }
+
+        public async Task<List<Sharing>> GetAllByDateAsync()
+        {
+            using var context = new BlogContext();
+
+            DbSet<Sharing> sharings= context.Set<Sharing>();
+            return await  sharings.OrderByDescending(x => x.SharingDate).ToListAsync();
+
+            
         }
     }
 }

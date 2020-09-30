@@ -34,7 +34,7 @@ namespace Project.Blog.Web.Controllers
 
             if (categoryId == null  && string.IsNullOrWhiteSpace(key))
             {
-                sharings = await _sharingService.GetAllAsync();
+                sharings = await _sharingService.GetAllSortedByDateAsync();
                 
             }
             else if (!string.IsNullOrWhiteSpace(key))
