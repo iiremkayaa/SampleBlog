@@ -7,14 +7,35 @@
         {
             foreach (var comment in comments)
             {
-                <div class="media mb-4">
-                    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                    <div class="media-body">
-                        <h5 class="mt-0">@comment.UserName</h5>
-                        @comment.Description
-                    </div>
+    <div class="media mb-4">
+        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
 
+
+
+        <div class="container">
+            <div class="row">
+                <div style="flex:1">
+                    <div style="display:inline-block">
+                        <h5 class="">@comment.UserName</h5>
+                    </div>
+                    <div style="display:inline-block;float:right">
+                        @comment.CommentDate.ToString("MM/dd/yyyy h:mm ")
+                    </div>
                 </div>
+
+            </div>
+
+
+            <div class="row">
+                @comment.Description
+
+            </div>
+        </div>
+        
+
+    </div>
+
+               
             }
 
         }

@@ -9,5 +9,6 @@ namespace Project.Blog.DataAccess.Interfaces
     public interface ICommentRepository :IGenericRepository<Comment>
     {
         Task<List<Comment>> GetAllBySharingIdAsync(int sharingId);
+        Task<List<Comment>> GetAllByDateAsync();
     }
 }

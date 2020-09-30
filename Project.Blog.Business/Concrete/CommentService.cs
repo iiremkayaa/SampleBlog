@@ -22,5 +22,10 @@ namespace Project.Blog.Business.Concrete
         {
            return await _commentRepository.GetAllBySharingIdAsync(id);
         }
+
+        public async Task<List<Comment>> GetAllSortedByDateAsync()
+        {
+            return await _commentRepository.GetAllByDateAsync();
+        }
     }
 }

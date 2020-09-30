@@ -15,7 +15,7 @@ namespace Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Repositories
         public async Task<List<Sharing>> GetAllByCategoryIdAsync(int id)
         {
             using var context = new BlogContext();
-            return await context.Set<Sharing>().Where(s => s.CategoryId == id).ToListAsync();
+            return await context.Set<Sharing>().OrderByDescending(x => x.SharingDate).Where(s => s.CategoryId == id).ToListAsync();
         }
 
        
@@ -23,7 +23,7 @@ namespace Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Repositories
         public async Task<List<Sharing>> SearchSharingAsync(string key)
         {
             using var context = new BlogContext();
-            return await context.Set<Sharing>().Where(s => s.Title.Contains(key) || s.Description.Contains(key)).ToListAsync();
+            return await context.Set<Sharing>().OrderByDescending(x=>x.SharingDate).Where(s => s.Title.Contains(key) || s.Description.Contains(key)).ToListAsync();
         }
 
         public async Task<List<Sharing>> GetAllByDateAsync()

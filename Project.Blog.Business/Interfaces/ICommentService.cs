@@ -9,5 +9,6 @@ namespace Project.Blog.Business.Interfaces
     public interface ICommentService :IGenericService<Comment>
     {
         Task<List<Comment>> GetAllBySharingIdAsync(int id);
+        Task<List<Comment>> GetAllSortedByDateAsync();
     }
 }
