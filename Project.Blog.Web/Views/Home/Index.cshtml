@@ -1,48 +1,5 @@
 ﻿@model List<SharingListModel>
 
-@{ 
-    /*string convertDate(DateTime sharingDate)
-    {
-
-        var difference = (DateTime.Now - sharingDate).TotalDays;
-        if (difference < 1)
-        {
-            difference = Convert.ToInt32((DateTime.Now - sharingDate).TotalHours);
-            if (difference == 0)
-            {
-                return Convert.ToInt32((DateTime.Now - sharingDate).TotalMinutes).ToString() + " minutes ago";
-            }
-            else
-            {
-                return Convert.ToInt32((DateTime.Now - sharingDate).TotalHours).ToString() + " hours ago";
-
-            }
-
-        }
-        else if (difference > 1 && difference < 30)
-        {
-            return Convert.ToInt32(difference).ToString() + " days ago";
-        }
-        else if (difference > 30 && difference < 365)
-        {
-            return Convert.ToInt32((((DateTime.Now - sharingDate).TotalDays) / 30) - 1).ToString() + " months ago";
-
-        }
-        else if (difference > 365)
-        {
-            return Convert.ToInt32((((DateTime.Now - sharingDate).TotalDays) / 365)).ToString() + " years ago";
-        }
-        else
-        {
-            return "";
-        }
-
-    }*/
-}
-
-
-
-
 <div class="col-md-8">
    
     <div class="my-4">
@@ -51,18 +8,11 @@
             <div class="card mb-4">
                 <div class="card-body">
                     <h2 class="card-title">@sharing.Title</h2>
-                    <p class="lead">
-                        By
-                        <a href="#">@sharing.UserName</a>
-                    </p>
-                    
                     <p class="card-text">@sharing.Description</p>
                     <a asp-action="Detail" asp-route-id="@sharing.Id" class="btn btn-primary">See Comments</a>
                 </div>
                 <div class="card-footer text-muted">
-                    @{ 
-
-                    }
+                   
                     @sharing.SharingDate.ToString("dddd, MMMM dd yyyy", new System.Globalization.CultureInfo("en-US")) by  <a href="#">@sharing.UserName</a>
 
                 </div>
@@ -80,15 +30,12 @@
         </ul>
     </div>
 
-    <!-- Pagination -->
 
 
 </div>
 
-<!-- Sidebar Widgets Column -->
 <div class="col-md-4">
 
-    <!-- Search Widget -->
     <div class="card my-4">
         <form asp-action="Index" asp-controller="Home" method="GET">
             <h5 class="card-header">Search</h5>
@@ -103,7 +50,6 @@
         </form>
     </div>
 
-    <!-- Categories Widget -->
     @await Component.InvokeAsync("CategoryList")
 
 

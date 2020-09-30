@@ -3,38 +3,63 @@
     ViewData["Title"] = "SignUp";
     Layout = "_Layout";
 }
-<h1>Register</h1>
-<form asp-action="Register" asp-controller="Home" method="post">
-    <div class="row">
-        <label asp-for="@Model.Username"></label>
-        <span asp-validation-for="@Model.Username"></span>
-        <input asp-for="@Model.Username" />
+
+
+
+<div class="container">
+    <div style="text-align:center;padding-left:20%;padding-right:20%">
+        <div class="card my-4">
+            <h5 class="card-header">Register</h5>
+            <div class="card-body text-center">
+                <form asp-action="Index" asp-controller="Share" method="post">
+                    <div class="form-group">
+                        <label asp-for="@Model.Username" style="font-weight:bold"></label>
+                        <span asp-validation-for="@Model.Username"></span>
+                        <input asp-for="@Model.Username" />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="@Model.Password" style="font-weight:bold"></label>
+                        <span asp-validation-for="@Model.Password"></span>
+                        <input asp-for="@Model.Password" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.ConfirmPassword" style="font-weight:bold"></label>
+                        <span asp-validation-for="@Model.ConfirmPassword"></span>
+                        <input asp-for="@Model.ConfirmPassword" />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="@Model.Name" style="font-weight:bold"></label>
+                        <span asp-validation-for="@Model.Name"></span>
+                        <input asp-for="@Model.Name" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.LastName" style="font-weight:bold"></label>
+                        <span asp-validation-for="@Model.LastName"></span>
+                        <input asp-for="@Model.LastName" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Email" style="font-weight:bold"></label>
+                        <span asp-validation-for="@Model.Email"></span>
+                        <input asp-for="@Model.Email" />
+                    </div>
+
+                    <input type="submit" value="Register" class="btn btn-primary pl-4 pr-4 pb-1 pt-1" />
+                </form>
+                <div class="text-center pt-4">
+                    <span class="txt1">
+                        Do you have an account?
+                    </span>
+
+                    <a asp-action="Login" asp-controller="Home" class="txt2 hov1">
+                        Sign in
+                    </a>
+                </div>
+
+                
+            </div>
+        </div>
+
     </div>
-    <div  class="row">
-        <label asp-for="@Model.Password"></label>
-        <span asp-validation-for="@Model.Password"></span>
-        <input asp-for="@Model.Password" />
-    </div>
-    <div  class="row">
-        <label asp-for="@Model.ConfirmPassword"></label>
-        <span asp-validation-for="@Model.ConfirmPassword"></span>
-        <input asp-for="@Model.ConfirmPassword" />
-    </div>
-    <div  class="row">
-        <label asp-for="@Model.Name"></label>
-        <span asp-validation-for="@Model.Name"></span>
-        <input asp-for="@Model.Name" />
-    </div>
-    <div  class="row">
-        <label asp-for="@Model.LastName"></label>
-        <span asp-validation-for="@Model.LastName"></span>
-        <input asp-for="@Model.LastName" />
-    </div>
-    <div  class="row">
-        <label asp-for="@Model.Email"></label>
-        <span asp-validation-for="@Model.Email"></span>
-        <input asp-for="@Model.Email" />
-    </div>
-    <input type="submit" value="Register" />
-    <a asp-action="Login" asp-controller="Home">Sign in</a>
-</form>
+</div>

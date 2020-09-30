@@ -89,19 +89,12 @@
     <div>
         <!-- Title -->
         <h1 class="mt-4">@Model.Title</h1>
-
-        <!-- Author -->
-        <p class="lead">
-            By
-            <a href="#">@Model.UserName</a>
-        </p>
-
         <hr>
+        <div>
 
-        <!-- Date/Time -->
-        <p>Posted on @Model.SharingDate.ToString("MM/dd/yyyy h:mm ")</p>
+            @Model.SharingDate.ToString("dddd, MMMM dd yyyy", new System.Globalization.CultureInfo("en-US")) by  <a href="#">@Model.UserName</a>
 
-        <hr>
+        </div>
 
 
 
