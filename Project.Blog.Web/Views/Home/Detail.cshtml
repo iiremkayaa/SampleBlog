@@ -1,6 +1,42 @@
 ﻿@model SharingListModel
 @{
     var comments = ViewBag.Comments;
+    string convertDate(DateTime commentDate){
+
+        var difference = (DateTime.Now - commentDate).TotalDays;
+        if (difference < 1)
+        {
+            difference = Convert.ToInt32((DateTime.Now - commentDate).TotalHours);
+            if (difference == 0)
+            {
+                return Convert.ToInt32((DateTime.Now - commentDate).TotalMinutes).ToString() + " minutes ago";
+            }
+            else
+            {
+                return Convert.ToInt32((DateTime.Now - commentDate).TotalHours).ToString() + " hours ago";
+
+            }
+
+        }
+        else if (difference > 1 && difference<30)
+        {
+            return Convert.ToInt32(difference).ToString() + " days ago";
+        }
+        else if (difference > 30 && difference<365)
+        {
+            return Convert.ToInt32((((DateTime.Now - commentDate).TotalDays)/30)-1).ToString()+" months ago";
+
+        }
+        else if(difference>365)
+        {
+            return Convert.ToInt32((((DateTime.Now - commentDate).TotalDays) /365) ).ToString() + " years ago";
+        }
+        else
+        {
+            return "";
+        }
+
+    }
     void GetComments(List<CommentListModel> comments)
     {
         if (comments.Count > 0)
@@ -18,8 +54,8 @@
                     <div style="display:inline-block">
                         <h5 class="">@comment.UserName</h5>
                     </div>
-                    <div style="display:inline-block;float:right">
-                        @comment.CommentDate.ToString("MM/dd/yyyy h:mm ")
+                    <div style="display:inline-block;float:right;color:darkgray">
+                        @convertDate(comment.LastModificationDate)
                     </div>
                 </div>
 
