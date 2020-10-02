@@ -8,6 +8,6 @@ namespace Project.Blog.DataAccess.Interfaces
 {
     public interface IUserRepository 
     {
-
+        Task<User> findByUserNameAsync(string userName);
     }
 }

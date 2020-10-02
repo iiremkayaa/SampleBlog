@@ -9,28 +9,28 @@ namespace Project.Blog.Web.Models
     public class UserRegisterModel 
     {
         [Display(Name="Username:")]
-        [Required(ErrorMessage="Username must not be empty.")]
+        [Required(ErrorMessage= "The username field is required.")]
         public string Username { get; set; }
 
         [Display(Name="Password:")]
-        [Required(ErrorMessage ="Password must not be empty.")]
+        [Required(ErrorMessage = "The password field is required.")]
         public string Password { get; set; }
 
         [Display(Name="Confirm Password:")]
         [Compare("Password", ErrorMessage = "Passwords do not match.")]
-        [Required(ErrorMessage ="Confirm password must not be empty.")]
+        [Required(ErrorMessage = "The confirm password field is required.")]
         public string ConfirmPassword { get; set; }
 
         [Display(Name="Name:")]
-        [Required(ErrorMessage = "Name must not be empty.")]
+        [Required(ErrorMessage = "The name field is required.")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Last Name must not be empty.")]
+        [Required(ErrorMessage = "The last name field is required.")]
         [Display(Name="Last name:")]
         public string LastName { get; set; }
 
         [Display(Name="Email:")]
-        [Required(ErrorMessage = "Email must not be empty.")]
+        [Required(ErrorMessage = "The email field is required.")]
         public string Email { get; set; }
     }
 }

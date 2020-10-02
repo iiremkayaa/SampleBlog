@@ -21,8 +21,8 @@ namespace Project.Blog.Business.Containers.MicrosoftIoC
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ICommentRepository, CommentRepository>();
             services.AddScoped<ICommentService, CommentService>();
-            /*services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IUserRepository, UserRepository>();*/
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
 
 

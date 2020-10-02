@@ -11,40 +11,57 @@
         <div class="card my-4">
             <h5 class="card-header">Register</h5>
             <div class="card-body text-center">
-                <form asp-action="Index" asp-controller="Share" method="post">
+                <form asp-action="Register" asp-controller="Home" method="post">
                     <div class="form-group">
                         <label asp-for="@Model.Username" style="font-weight:bold"></label>
-                        <span asp-validation-for="@Model.Username"></span>
                         <input asp-for="@Model.Username" />
                     </div>
 
                     <div class="form-group">
                         <label asp-for="@Model.Password" style="font-weight:bold"></label>
-                        <span asp-validation-for="@Model.Password"></span>
                         <input asp-for="@Model.Password" />
                     </div>
                     <div class="form-group">
                         <label asp-for="@Model.ConfirmPassword" style="font-weight:bold"></label>
-                        <span asp-validation-for="@Model.ConfirmPassword"></span>
                         <input asp-for="@Model.ConfirmPassword" />
                     </div>
 
                     <div class="form-group">
                         <label asp-for="@Model.Name" style="font-weight:bold"></label>
-                        <span asp-validation-for="@Model.Name"></span>
                         <input asp-for="@Model.Name" />
                     </div>
                     <div class="form-group">
                         <label asp-for="@Model.LastName" style="font-weight:bold"></label>
-                        <span asp-validation-for="@Model.LastName"></span>
                         <input asp-for="@Model.LastName" />
                     </div>
                     <div class="form-group">
                         <label asp-for="@Model.Email" style="font-weight:bold"></label>
-                        <span asp-validation-for="@Model.Email"></span>
                         <input asp-for="@Model.Email" />
                     </div>
-
+                    <div style="text-align:center">
+                        <span class="text-danger" asp-validation-for="@Model.Username"></span>
+                    </div>
+                    <div style="text-align:center">
+                        <span class="text-danger" asp-validation-for="@Model.Password"></span>
+                    </div>
+                    <div style="text-align:center">
+                        <span class="text-danger" asp-validation-for="@Model.ConfirmPassword"></span>
+                    </div>
+                    <div style="text-align:center">
+                        <span class="text-danger" asp-validation-for="@Model.Name"></span>
+                    </div>
+                    <div style="text-align:center">
+                        <span class="text-danger" asp-validation-for="@Model.LastName"></span>
+                    </div>
+                    <div class="pb-2" style="text-align:center">
+                        <span class="text-danger" asp-validation-for="@Model.Email"></span>
+                    </div>
+                    <div>
+                        <p class="text-danger">@ViewBag.EmailError</p>
+                    </div>
+                    <div>
+                        <p class="text-danger">@ViewBag.UserNameError</p>
+                    </div>
                     <input type="submit" value="Register" class="btn btn-primary pl-4 pr-4 pb-1 pt-1" />
                 </form>
                 <div class="text-center pt-4">

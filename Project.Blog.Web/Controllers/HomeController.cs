@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Project.Blog.Business.Interfaces;
 using Project.Blog.Entities.Concrete;
 using Project.Blog.Web.Models;
@@ -17,14 +18,16 @@ namespace Project.Blog.Web.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly ICommentService _commentService;
+        private readonly IUserService _userService;
        
             public HomeController(ICommentService commentService,ISharingService sharingService,UserManager<User> userManager,
-            SignInManager<User> signInManager)
+            SignInManager<User> signInManager,IUserService userService)
         {
             _sharingService = sharingService;
             _userManager = userManager;
             _signInManager = signInManager;
             _commentService = commentService;
+            _userService = userService;
 
         }
         public async Task<IActionResult> IndexAsync(int? categoryId,string key)
@@ -141,12 +144,19 @@ namespace Project.Blog.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(UserLoginModel model)
         {
-           
-            var result = await _signInManager.PasswordSignInAsync(model.Username,
-                           model.Password, model.RememberMe, lockoutOnFailure: true);
-            if (result.Succeeded)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Index", "Home");
+
+                var result = await _signInManager.PasswordSignInAsync(model.Username,
+                               model.Password, model.RememberMe, lockoutOnFailure: true);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ViewBag.Message = "Wrong username or password.";
+                }
             }
             return View();
         }
@@ -161,32 +171,48 @@ namespace Project.Blog.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = new User
+                var emailIsExist=await _userManager.FindByEmailAsync(model.Email);
+                var userNameIsExist = await _userManager.Users.Where(u=>u.UserName==model.Username).ToListAsync();
+                //await _userService.GetByUserNameAsync(model.Username);
+                if (emailIsExist!=null)
                 {
-                    Email = model.Email,
-                    Name = model.Name,
-                    LastName = model.LastName,
-                    UserName = model.Username,
-                };
-                var result = await _userManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                    ViewBag.EmailError = "Email is already taken.";
+                }
+                else if (userNameIsExist.Count > 0)
                 {
-                    var resultSıgnIn = await _signInManager.PasswordSignInAsync(model.Username,model.Password,false,lockoutOnFailure: true);
-                    if (resultSıgnIn.Succeeded)
+                    ViewBag.UserNameError = "Username is already taken.";
+                }
+                else
+                {
+                    User user = new User
                     {
-                        return RedirectToAction("Index", "Home");
-                    }
-                    else
+                        Email = model.Email,
+                        Name = model.Name,
+                        LastName = model.LastName,
+                        UserName = model.Username,
+                    };
+                    var result = await _userManager.CreateAsync(user, model.Password);
+                    if (result.Succeeded)
                     {
-                        return RedirectToAction("Login", "Home");
-                    }
-                    
+                        var resultSıgnIn = await _signInManager.PasswordSignInAsync(model.Username, model.Password, false, lockoutOnFailure: true);
+                        if (resultSıgnIn.Succeeded)
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
+                        else
+                        {
+                            return RedirectToAction("Login", "Home");
+                        }
 
+
+                    }
+
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
                 }
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError("", error.Description);
-                }
+                
 
             }
             return View(model);

@@ -9,10 +9,10 @@ namespace Project.Blog.Web.Models
     public class UserLoginModel
     {
         [Display(Name="Username:")]
-        [Required(ErrorMessage ="Username must not be empty.")]
+        [Required(ErrorMessage ="The username field is required.")]
         public string Username { get; set; }
         [Display(Name="Password:")]
-        [Required(ErrorMessage ="Password must not be empty.")]
+        [Required(ErrorMessage ="The password field is required.")]
         public string Password { get; set; }
         public bool RememberMe { get; set; }
     }
