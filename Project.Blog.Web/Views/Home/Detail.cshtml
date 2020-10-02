@@ -1,7 +1,8 @@
 ﻿@model SharingListModel
 @{
     var comments = ViewBag.Comments;
-    string convertDate(DateTime commentDate){
+    string convertDate(DateTime commentDate)
+    {
 
         var difference = (DateTime.Now - commentDate).TotalDays;
         if (difference < 1)
@@ -18,18 +19,18 @@
             }
 
         }
-        else if (difference > 1 && difference<30)
+        else if (difference > 1 && difference < 30)
         {
             return Convert.ToInt32(difference).ToString() + " days ago";
         }
-        else if (difference > 30 && difference<365)
+        else if (difference > 30 && difference < 365)
         {
-            return Convert.ToInt32((((DateTime.Now - commentDate).TotalDays)/30)-1).ToString()+" months ago";
+            return Convert.ToInt32((((DateTime.Now - commentDate).TotalDays) / 30) - 1).ToString() + " months ago";
 
         }
-        else if(difference>365)
+        else if (difference > 365)
         {
-            return Convert.ToInt32((((DateTime.Now - commentDate).TotalDays) /365) ).ToString() + " years ago";
+            return Convert.ToInt32((((DateTime.Now - commentDate).TotalDays) / 365)).ToString() + " years ago";
         }
         else
         {
@@ -43,35 +44,25 @@
         {
             foreach (var comment in comments)
             {
-    <div class="media mb-4">
-        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-
-
-
-        <div class="container">
-            <div class="row">
-                <div style="flex:1">
-                    <div style="display:inline-block">
-                        <h5 class="">@comment.UserName</h5>
-                    </div>
-                    <div style="display:inline-block;float:right;color:darkgray">
-                        @convertDate(comment.LastModificationDate)
+                <div class="media mb-4">
+                    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                    <div class="container">
+                        <div class="row">
+                            <div style="flex:1">
+                                <div style="display:inline-block">
+                                    <h5 class="">@comment.UserName</h5>
+                                </div>
+                                <div style="display:inline-block;float:right;color:darkgray">
+                                    @convertDate(comment.LastModificationDate)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            @comment.Description
+                        </div>
+                        
                     </div>
                 </div>
-
-            </div>
-
-
-            <div class="row">
-                @comment.Description
-
-            </div>
-        </div>
-        
-
-    </div>
-
-               
             }
 
         }
@@ -159,3 +150,4 @@
 
 
 </div>
+
