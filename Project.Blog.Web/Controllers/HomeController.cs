@@ -222,7 +222,7 @@ namespace Project.Blog.Web.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Login");
         }
-       
+        
         private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
         
         

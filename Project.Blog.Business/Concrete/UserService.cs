@@ -15,9 +15,6 @@ namespace Project.Blog.Business.Concrete
         {
             _userRepository = userRepository;
         }
-        public async Task<User> GetByUserNameAsync(string userName)
-        {
-            return await _userRepository.findByUserNameAsync(userName);
-        }
+       
     }
 }

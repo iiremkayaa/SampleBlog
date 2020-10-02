@@ -8,6 +8,5 @@ namespace Project.Blog.Business.Interfaces
 {
     public interface IUserService 
     {
-        Task<User> GetByUserNameAsync(string userName);
     }
 }

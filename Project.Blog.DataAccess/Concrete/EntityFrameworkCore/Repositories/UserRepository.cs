@@ -12,10 +12,6 @@ namespace Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        public async Task<User> findByUserNameAsync(string userName)
-        {
-            using var context = new BlogContext();
-            return null;
-        }
+        
     }
 }
