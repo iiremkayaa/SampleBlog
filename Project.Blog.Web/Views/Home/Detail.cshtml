@@ -60,7 +60,13 @@
                         <div class="row">
                             @comment.Description
                         </div>
-                        
+                        <div class="float-right">
+                            <button style="color:burlywood" class="btn pl-3 pr-3 pb-0 pt-0" type="button" id="deleteComment" onclick="location.href='@Url.Action("DeleteComment", "Home", new { id = comment.Id,sharingId = @Model.Id })'">
+                                Delete
+
+                            </button>
+                        </div>
+
                     </div>
                 </div>
             }
@@ -151,3 +157,13 @@
 
 </div>
 
+@section Scripts{
+
+    
+
+        <script>
+          
+            
+        </script>
+
+}

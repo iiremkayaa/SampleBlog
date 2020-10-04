@@ -222,7 +222,12 @@ namespace Project.Blog.Web.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Login");
         }
-        
+        public async Task<IActionResult> DeleteComment(int id,int sharingId)
+        {
+            var num = sharingId;
+            await _commentService.RemoveAsync(id);
+            return RedirectToAction("Detail", new { id = sharingId } );
+        }
         private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
         
         
