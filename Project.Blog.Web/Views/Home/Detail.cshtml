@@ -10,27 +10,27 @@
             difference = Convert.ToInt32((DateTime.Now - commentDate).TotalHours);
             if (difference == 0)
             {
-                return Convert.ToInt32((DateTime.Now - commentDate).TotalMinutes).ToString() + " minutes ago";
+                return Convert.ToInt32((DateTime.Now - commentDate).TotalMinutes).ToString() + "m";
             }
             else
             {
-                return Convert.ToInt32((DateTime.Now - commentDate).TotalHours).ToString() + " hours ago";
+                return Convert.ToInt32((DateTime.Now - commentDate).TotalHours).ToString() + "h";
 
             }
 
         }
         else if (difference > 1 && difference < 30)
         {
-            return Convert.ToInt32(difference).ToString() + " days ago";
+            return Convert.ToInt32(difference).ToString() + "d";
         }
         else if (difference > 30 && difference < 365)
         {
-            return Convert.ToInt32((((DateTime.Now - commentDate).TotalDays) / 30) - 1).ToString() + " months ago";
+            return Convert.ToInt32((((DateTime.Now - commentDate).TotalDays) / 30) - 1).ToString() + "m";
 
         }
         else if (difference > 365)
         {
-            return Convert.ToInt32((((DateTime.Now - commentDate).TotalDays) / 365)).ToString() + " years ago";
+            return Convert.ToInt32((((DateTime.Now - commentDate).TotalDays) / 365)).ToString() + "y";
         }
         else
         {
@@ -46,7 +46,7 @@
             {
                 <div class="media mb-4">
                     <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                    <div class="container">
+                    <div class="container" style="">
                         <div class="row">
                             <div style="flex:1">
                                 <div style="display:inline-block">
@@ -60,12 +60,14 @@
                         <div class="row">
                             @comment.Description
                         </div>
-                        <div class="float-right">
-                            <button style="color:burlywood" class="btn pl-3 pr-3 pb-0 pt-0" type="button" id="deleteComment" onclick="location.href='@Url.Action("DeleteComment", "Home", new { id = comment.Id,sharingId = @Model.Id })'">
-                                Delete
+                        <div class="row">
+                            <div style="display: flex; justify-content: flex-end;/* width: 100%;*/ padding: 0;flex:1">
+                                <input class="btn btn-link" type="button" style="color:burlywood;text-align:right;padding:0" id="deleteComment" onclick="location.href='@Url.Action("DeleteComment", "Home", new { id = comment.Id,sharingId = @Model.Id })'" value="Delete" />
 
-                            </button>
+
+                            </div>
                         </div>
+                        
 
                     </div>
                 </div>
