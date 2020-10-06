@@ -11,16 +11,12 @@ namespace Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Mapping
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            /*builder.HasKey(I => I.Id);
-            builder.Property(I => I.Id).UseIdentityColumn();
-            builder.Property(I => I.Username).HasMaxLength(100).IsRequired();
-            builder.Property(I => I.Password).HasMaxLength(100).IsRequired();*/
+      
             builder.Property(I => I.Name).HasMaxLength(100);
             builder.Property(I => I.LastName).HasMaxLength(100);
-            //builder.Property(I => I.Email).HasMaxLength(100);
             builder.HasMany(I => I.Sharings).WithOne(I => I.User).HasForeignKey(I => I.UserId);
             builder.HasMany(I => I.Comments).WithOne(I => I.CommentOwner).HasForeignKey(I => I.CommentOwnerId);
-
+            builder.HasMany(I => I.CommentUser).WithOne(I => I.User).HasForeignKey(I => I.UserId);
 
         }
     }

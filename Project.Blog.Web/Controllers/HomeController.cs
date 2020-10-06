@@ -19,7 +19,6 @@ namespace Project.Blog.Web.Controllers
         private readonly SignInManager<User> _signInManager;
         private readonly ICommentService _commentService;
         private readonly IUserService _userService;
-       
             public HomeController(ICommentService commentService,ISharingService sharingService,UserManager<User> userManager,
             SignInManager<User> signInManager,IUserService userService)
         {
@@ -73,7 +72,8 @@ namespace Project.Blog.Web.Controllers
         }
         public async Task<IActionResult> Detail(int id)
         {
-
+            var currentUser = await GetCurrentUserAsync();
+            
             Sharing sharing = await _sharingService.FindByIdAsync(id);
             if (sharing != null)
             {
@@ -97,6 +97,8 @@ namespace Project.Blog.Web.Controllers
                     {
                         string userId = item.CommentOwnerId.ToString();
                         var commentUser = await _userManager.FindByIdAsync(userId);
+
+                        var result=await _commentService.isLiked(item.Id, currentUser.Id);
                         CommentListModel commentModel = new CommentListModel
                         {
                             Id = item.Id,
@@ -104,7 +106,9 @@ namespace Project.Blog.Web.Controllers
                             CommentDate = item.CommentDate,
                             NumberOfLikes = item.NumberOfLikes,
                             LastModificationDate = item.LastModificationDate,
-                            UserName = commentUser.UserName
+                            UserName = commentUser.UserName,
+                            CommentUsers=item.CommentUser,
+                            isLiked=result ? "Liked" :" Like",
 
                         };
                         commentModels.Add(commentModel);
@@ -227,6 +231,28 @@ namespace Project.Blog.Web.Controllers
             var num = sharingId;
             await _commentService.RemoveAsync(id);
             return RedirectToAction("Detail", new { id = sharingId } );
+        }
+        [Authorize]
+        public async Task<IActionResult> LikeComment(int id, int sharingId)
+        {
+            var currentUser = await GetCurrentUserAsync();
+            int userId;
+            if (currentUser != null)
+            {
+                userId = currentUser.Id;
+                Comment comment = await _commentService.FindByIdAsync(id);                
+                if(await _commentService.LikeComment(id, userId))
+                {
+                    comment.NumberOfLikes += 1;
+                }
+                else
+                {
+                    comment.NumberOfLikes--;
+                }
+                await _commentService.UpdateAsync(comment);
+            }
+            
+            return RedirectToAction("Detail", new { id = sharingId });
         }
         private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
         

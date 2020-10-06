@@ -16,5 +16,6 @@ namespace Project.Blog.Entities.Concrete
 		public Sharing Sharing { get; set; }
 		public int? CommentOwnerId { get; set; }
 		public User CommentOwner { get; set; }
+		public List<CommentUser> CommentUser { get; set; }
 	}
 }

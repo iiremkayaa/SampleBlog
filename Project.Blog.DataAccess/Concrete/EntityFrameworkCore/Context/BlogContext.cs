@@ -21,6 +21,7 @@ namespace Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Context
             modelBuilder.ApplyConfiguration(new CommentMap());
             modelBuilder.ApplyConfiguration(new SharingMap());
             modelBuilder.ApplyConfiguration(new UserMap());
+            modelBuilder.ApplyConfiguration(new CommentUserMap());
             /*modelBuilder.Ignore<IdentityUserLogin<int>>();
             modelBuilder.Ignore<IdentityUserRole<int>>();
             modelBuilder.Ignore<IdentityUserClaim<int>>();
@@ -33,5 +34,6 @@ namespace Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Context
         public DbSet<Sharing> Sharings { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<CommentUser> CommentUsers { get; set; }
     }
 }
