@@ -19,7 +19,6 @@ namespace Project.Blog.Web.Controllers
         private readonly SignInManager<User> _signInManager;
         private readonly ICommentService _commentService;
         private readonly IUserService _userService;
-       
             public HomeController(ICommentService commentService,ISharingService sharingService,UserManager<User> userManager,
             SignInManager<User> signInManager,IUserService userService)
         {
@@ -227,6 +226,14 @@ namespace Project.Blog.Web.Controllers
             var num = sharingId;
             await _commentService.RemoveAsync(id);
             return RedirectToAction("Detail", new { id = sharingId } );
+        }
+        public async Task<IActionResult> LikeComment(int id, int sharingId)
+        {
+
+            Comment comment =await _commentService.FindByIdAsync(id);
+            comment.NumberOfLikes +=1;
+            await _commentService.UpdateAsync(comment);
+            return RedirectToAction("Detail", new { id = sharingId });
         }
         private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
         
