@@ -51,6 +51,17 @@ namespace Project.Blog.Business.Concrete
             }
 
         }
+        public async Task<bool> isLiked(int commentId, int userId)
+        {
+            var result=await _commentUserRepository.ReturnCommentUser(commentId, userId);
+            if (result.Count > 0)
+            {
+                return true;
+            }
+            return false;
+
+
+        }
 
       
     }       

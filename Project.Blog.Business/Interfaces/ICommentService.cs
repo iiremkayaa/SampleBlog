@@ -11,5 +11,6 @@ namespace Project.Blog.Business.Interfaces
         Task<List<Comment>> GetAllBySharingIdAsync(int id);
         Task<List<Comment>> GetAllSortedByDateAsync();
         Task<bool> LikeComment(int commentId, int userId);
+        Task<bool> isLiked(int commentId, int userId);
     }
 }

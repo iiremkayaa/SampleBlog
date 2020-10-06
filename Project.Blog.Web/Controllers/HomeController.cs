@@ -72,7 +72,8 @@ namespace Project.Blog.Web.Controllers
         }
         public async Task<IActionResult> Detail(int id)
         {
-
+            var currentUser = await GetCurrentUserAsync();
+            
             Sharing sharing = await _sharingService.FindByIdAsync(id);
             if (sharing != null)
             {
@@ -97,7 +98,7 @@ namespace Project.Blog.Web.Controllers
                         string userId = item.CommentOwnerId.ToString();
                         var commentUser = await _userManager.FindByIdAsync(userId);
 
-                     
+                        var result=await _commentService.isLiked(item.Id, currentUser.Id);
                         CommentListModel commentModel = new CommentListModel
                         {
                             Id = item.Id,
@@ -107,6 +108,7 @@ namespace Project.Blog.Web.Controllers
                             LastModificationDate = item.LastModificationDate,
                             UserName = commentUser.UserName,
                             CommentUsers=item.CommentUser,
+                            isLiked=result ? "Liked" :" Like",
 
                         };
                         commentModels.Add(commentModel);

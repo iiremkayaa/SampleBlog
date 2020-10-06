@@ -63,7 +63,7 @@
                         <div class="row">
                             <div style="display: flex; justify-content: flex-end;/* width: 100%;*/ padding: 0;flex:1">
                                 <input class="btn btn-link pr-2" type="button" style="color:burlywood;text-align:right;padding:0" id="deleteComment" onclick="location.href='@Url.Action("DeleteComment", "Home", new { id = comment.Id,sharingId = @Model.Id })'" value="Delete" />
-                                <input class="btn btn-link pl-2" type="button" style="color:green;text-align:right;padding:0" id="likeComment" onclick="location.href='@Url.Action("LikeComment", "Home", new { id = comment.Id,sharingId = @Model.Id })'" value="Like (@comment.NumberOfLikes) " />
+                                <input class="btn btn-link pl-2" type="button" style="color:green;text-align:right;padding:0" id="likeComment" onclick="location.href='@Url.Action("LikeComment", "Home", new { id = comment.Id,sharingId = @Model.Id })'" value="@comment.isLiked (@comment.NumberOfLikes) " />
 
                                 
                             </div>
