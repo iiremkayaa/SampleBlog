@@ -13,5 +13,6 @@ namespace Project.Blog.Entities.Concrete
 		public string LastName { get; set; }
 		public List<Sharing> Sharings { get; set; }
 		public List<Comment> Comments { get; set; }
+		public List<CommentUser> CommentUser { get; set; }
 	}
 }

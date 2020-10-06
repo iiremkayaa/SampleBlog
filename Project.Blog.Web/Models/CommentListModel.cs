@@ -15,6 +15,8 @@ namespace Project.Blog.Web.Models
 		public DateTime LastModificationDate { get; set; }
 		public string UserName { get; set; }
 
+		public List<CommentUser> CommentUsers { get; set; }
+
 
 
 	}

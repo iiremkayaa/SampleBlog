@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Context;
 
 namespace Project.Blog.DataAccess.Migrations
 {
     [DbContext(typeof(BlogContext))]
-    partial class BlogContextModelSnapshot : ModelSnapshot
+    [Migration("20201006132458_AddedColumnToUser")]
+    partial class AddedColumnToUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -170,38 +172,18 @@ namespace Project.Blog.DataAccess.Migrations
                     b.Property<int?>("SharingId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CommentOwnerId");
 
                     b.HasIndex("SharingId");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Comments");
-                });
-
-            modelBuilder.Entity("Project.Blog.Entities.Concrete.CommentUser", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
-                        .HasAnnotation("SqlServer:IdentitySeed", 1)
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CommentId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CommentId");
-
-                    b.HasIndex("UserId", "CommentId")
-                        .IsUnique();
-
-                    b.ToTable("CommentUsers");
                 });
 
             modelBuilder.Entity("Project.Blog.Entities.Concrete.Role", b =>
@@ -408,21 +390,10 @@ namespace Project.Blog.DataAccess.Migrations
                     b.HasOne("Project.Blog.Entities.Concrete.Sharing", "Sharing")
                         .WithMany("Comments")
                         .HasForeignKey("SharingId");
-                });
 
-            modelBuilder.Entity("Project.Blog.Entities.Concrete.CommentUser", b =>
-                {
-                    b.HasOne("Project.Blog.Entities.Concrete.Comment", "Comment")
-                        .WithMany("CommentUser")
-                        .HasForeignKey("CommentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Project.Blog.Entities.Concrete.User", "User")
-                        .WithMany("CommentUser")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("Project.Blog.Entities.Concrete.User", null)
+                        .WithMany("LikedComments")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Project.Blog.Entities.Concrete.Sharing", b =>

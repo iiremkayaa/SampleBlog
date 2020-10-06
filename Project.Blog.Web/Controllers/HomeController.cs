@@ -96,6 +96,8 @@ namespace Project.Blog.Web.Controllers
                     {
                         string userId = item.CommentOwnerId.ToString();
                         var commentUser = await _userManager.FindByIdAsync(userId);
+
+                     
                         CommentListModel commentModel = new CommentListModel
                         {
                             Id = item.Id,
@@ -103,7 +105,8 @@ namespace Project.Blog.Web.Controllers
                             CommentDate = item.CommentDate,
                             NumberOfLikes = item.NumberOfLikes,
                             LastModificationDate = item.LastModificationDate,
-                            UserName = commentUser.UserName
+                            UserName = commentUser.UserName,
+                            CommentUsers=item.CommentUser,
 
                         };
                         commentModels.Add(commentModel);
@@ -227,12 +230,26 @@ namespace Project.Blog.Web.Controllers
             await _commentService.RemoveAsync(id);
             return RedirectToAction("Detail", new { id = sharingId } );
         }
+        [Authorize]
         public async Task<IActionResult> LikeComment(int id, int sharingId)
         {
-
-            Comment comment =await _commentService.FindByIdAsync(id);
-            comment.NumberOfLikes +=1;
-            await _commentService.UpdateAsync(comment);
+            var currentUser = await GetCurrentUserAsync();
+            int userId;
+            if (currentUser != null)
+            {
+                userId = currentUser.Id;
+                Comment comment = await _commentService.FindByIdAsync(id);                
+                if(await _commentService.LikeComment(id, userId))
+                {
+                    comment.NumberOfLikes += 1;
+                }
+                else
+                {
+                    comment.NumberOfLikes--;
+                }
+                await _commentService.UpdateAsync(comment);
+            }
+            
             return RedirectToAction("Detail", new { id = sharingId });
         }
         private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);

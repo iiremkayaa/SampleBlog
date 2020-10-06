@@ -23,7 +23,7 @@ namespace Project.Blog.Business.Containers.MicrosoftIoC
             services.AddScoped<ICommentService, CommentService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUserRepository, UserRepository>();
-
+            services.AddScoped<ICommentUserRepository, CommentUserRepository>();
 
 
         }

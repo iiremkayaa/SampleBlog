@@ -23,5 +23,7 @@ namespace Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Repositories
             using var context = new BlogContext();
             return await context.Set<Comment>().Where(s => s.SharingId == sharingId).OrderByDescending(x => x.LastModificationDate).ToListAsync();
         }
+        
+
     }
 }

@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Project.Blog.DataAccess.Interfaces
 {
-    public interface ICommentRepository :IGenericRepository<Comment>
+    public interface ICommentUserRepository : IGenericRepository<CommentUser>
     {
-        Task<List<Comment>> GetAllBySharingIdAsync(int sharingId);
-        Task<List<Comment>> GetAllByDateAsync();
-
+        Task<List<CommentUser>> ReturnCommentUser(int commentId,int userId);
     }
 }

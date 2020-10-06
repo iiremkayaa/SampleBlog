@@ -65,7 +65,7 @@
                                 <input class="btn btn-link pr-2" type="button" style="color:burlywood;text-align:right;padding:0" id="deleteComment" onclick="location.href='@Url.Action("DeleteComment", "Home", new { id = comment.Id,sharingId = @Model.Id })'" value="Delete" />
                                 <input class="btn btn-link pl-2" type="button" style="color:green;text-align:right;padding:0" id="likeComment" onclick="location.href='@Url.Action("LikeComment", "Home", new { id = comment.Id,sharingId = @Model.Id })'" value="Like (@comment.NumberOfLikes) " />
 
-
+                                
                             </div>
                         </div>
                         

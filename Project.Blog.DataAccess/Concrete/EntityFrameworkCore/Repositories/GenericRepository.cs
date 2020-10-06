@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Context;
 using Project.Blog.DataAccess.Interfaces;
+using Project.Blog.Entities.Concrete;
 using Project.Blog.Entities.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -51,6 +52,6 @@ namespace Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Repositories
             await context.SaveChangesAsync();
         }
 
-       
+        
     }
 }
