@@ -17,8 +17,12 @@ namespace Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Repositories
             using var context = new BlogContext();
             return await context.Set<Sharing>().OrderByDescending(x => x.SharingDate).Where(s => s.CategoryId == id).ToListAsync();
         }
+        public async Task<List<Sharing>> GetAllByUserIdAsync(int id)
+        {
+            using var context = new BlogContext();
+            return await context.Set<Sharing>().OrderByDescending(x => x.SharingDate).Where(s => s.UserId == id).ToListAsync();
+        }
 
-       
 
         public async Task<List<Sharing>> SearchSharingAsync(string key)
         {

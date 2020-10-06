@@ -14,18 +14,46 @@ namespace Project.Blog.Web.Controllers
     {
         private readonly SignInManager<User> _signInManager;
         private readonly UserManager<User> _userManager;
-        public ProfileController(SignInManager<User> signInManager, UserManager<User> userManager)
+        private readonly ISharingService _sharingService;
+
+        public ProfileController(SignInManager<User> signInManager, UserManager<User> userManager,ISharingService sharingService)
         {
             _signInManager = signInManager;
             _userManager = userManager;
+            _sharingService = sharingService;
         }
         public async Task<IActionResult> IndexAsync()
+        {
+            User currentUser= await GetCurrentUserAsync();
+            List<Sharing> sharings = await _sharingService.GetAllByUserIdAsync(currentUser.Id);
+            List<SharingListModel> models = new List<SharingListModel>();
+
+            foreach (var item in sharings)
+            {
+                string userId = item.UserId.ToString();
+                var user = await _userManager.FindByIdAsync(userId);
+                SharingListModel model = new SharingListModel
+                {
+                    Id = item.Id,
+                    Title = item.Title,
+                    Description = item.Description,
+                    SharingDate = item.SharingDate,
+                    UserName = user.UserName,
+
+                };
+                models.Add(model);
+
+            }
+            return View(models);
+        }
+        
+        public async Task<IActionResult> SettingAsync()
         {
             User user = await GetCurrentUserAsync();
             UserListModel model;
             if (user != null)
             {
-                 model = new UserListModel
+                model = new UserListModel
                 {
                     Id = user.Id,
                     Username = user.UserName,
@@ -35,18 +63,18 @@ namespace Project.Blog.Web.Controllers
                     PhoneNumber = user.PhoneNumber,
                     Sharings = user.Sharings,
                     Comments = user.Comments,
-                    Email=user.Email,
+                    Email = user.Email,
                 };
             }
             else
             {
                 model = new UserListModel();
             }
-            
+
             return View(model);
         }
         [HttpPost]
-        public async Task<IActionResult> IndexAsync(UserListModel model)
+        public async Task<IActionResult> SettingAsync(UserListModel model)
         {
             var id = model.Id.ToString();
             if (id != null)
@@ -57,8 +85,8 @@ namespace Project.Blog.Web.Controllers
                 user.LastName = model.LastName;
                 user.Gender = model.Gender;
                 user.PhoneNumber = model.PhoneNumber;
-                
-                var result=await _userManager.UpdateAsync(user);
+
+                var result = await _userManager.UpdateAsync(user);
                 if (result.Succeeded)
                 {
                     ViewBag.Result = "All changes saved.";
@@ -71,6 +99,7 @@ namespace Project.Blog.Web.Controllers
             return View(model);
 
         }
+
         private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
     }
 }
