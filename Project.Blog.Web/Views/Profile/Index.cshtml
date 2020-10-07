@@ -21,14 +21,20 @@
         }
     }
 }
-<div class="col">
+
     <div class="my-4">
-        @foreach (var sharing in Model)
-        {
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h2 class="card-title">@sharing.Title</h2>
-                    <p class="card-text">@displayShortDescription(@sharing.Description)</p>
+        <div class="mr-4 mb-2" style="display:flex;justify-content: flex-end;">
+
+            <a style="font-size:16px;font-weight:500" asp-controller="Profile" asp-action="Setting">Setting</a>
+
+        </div>
+        <div class="col">
+            @foreach (var sharing in Model)
+            {
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h2 class="card-title">@sharing.Title</h2>
+                        <p class="card-text">@displayShortDescription(@sharing.Description)</p>
                         <div style="display:flex;justify-content: flex-end;">
                             <a asp-action="Detail" asp-route-id="@sharing.Id" class="btn btn-primary">Show Details</a>
                         </div>
@@ -44,11 +50,11 @@
                     </div>
 
                 </div>
-        }
+            }
 
-        
+
+        </div>
+
+
+
     </div>
-
-
-
-</div>
