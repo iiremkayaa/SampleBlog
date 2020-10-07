@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -19,19 +20,22 @@ namespace Project.Blog.Web.Controllers
         private readonly SignInManager<User> _signInManager;
         private readonly ICommentService _commentService;
         private readonly IUserService _userService;
-            public HomeController(ICommentService commentService,ISharingService sharingService,UserManager<User> userManager,
-            SignInManager<User> signInManager,IUserService userService)
+        private readonly IMapper _mapper;
+        public HomeController(ICommentService commentService,ISharingService sharingService,UserManager<User> userManager,
+            SignInManager<User> signInManager,IUserService userService, IMapper mapper)
         {
             _sharingService = sharingService;
             _userManager = userManager;
             _signInManager = signInManager;
             _commentService = commentService;
             _userService = userService;
+            _mapper = mapper;
 
         }
         public async Task<IActionResult> IndexAsync(int? categoryId,string key)
         {
-
+            User kullancıılar = await _userManager.FindByNameAsync("test");
+            var ss = kullancıılar;
             List<SharingListModel> models = new List<SharingListModel>();
             List<Sharing> sharings = new List<Sharing>();
 
@@ -55,16 +59,15 @@ namespace Project.Blog.Web.Controllers
             {
                 string userId = item.UserId.ToString();
                 var user = await _userManager.FindByIdAsync(userId);
-                SharingListModel model = new SharingListModel
-                {
-                    Id = item.Id,
-                    Title = item.Title,
-                    Description = item.Description,
-                    SharingDate = item.SharingDate,
-                    UserName=user.UserName,
-                    
-                };
+                SharingListModel model=_mapper.Map<SharingListModel>(item);
+
+                var owner = await _userManager.FindByIdAsync(model.UserId.ToString());
+                model.UserName = owner.UserName;
+
                 models.Add(model);
+                
+              
+                
 
             }
             return View(models);
@@ -74,44 +77,31 @@ namespace Project.Blog.Web.Controllers
         public async Task<IActionResult> Detail(int id)
         {
             var currentUser = await GetCurrentUserAsync();
-            
+            var x = currentUser;
             Sharing sharing = await _sharingService.FindByIdAsync(id);
             if (sharing != null)
             {
                 int? ownerId = sharing.UserId;
-                User user = new User();
-                user = await _userManager.FindByIdAsync(ownerId.ToString());
-                SharingListModel model = new SharingListModel
-                {
-                    Id = sharing.Id,
-                    Title = sharing.Title,
-                    Description = sharing.Description,
-                    SharingDate = sharing.SharingDate,
-                    UserName = user.UserName,
-                };
+                SharingListModel model = _mapper.Map<SharingListModel>(sharing);
+                var owner = await _userManager.FindByIdAsync(model.UserId.ToString());
+                model.UserName = owner.UserName;
+                
                 List<Comment> comments = await _commentService.GetAllBySharingIdAsync(id);
                 List<CommentListModel> commentModels = new List<CommentListModel>();
                 foreach (var item in comments)
                 {
 
-                    if (item.CommentOwnerId != null)
+                    if (item.UserId != null)
                     {
-                        string userId = item.CommentOwnerId.ToString();
+                        string userId = item.UserId.ToString();
                         var commentUser = await _userManager.FindByIdAsync(userId);
 
                         var result=await _commentService.isLiked(item.Id, currentUser.Id);
-                        CommentListModel commentModel = new CommentListModel
-                        {
-                            Id = item.Id,
-                            Description = item.Description,
-                            CommentDate = item.CommentDate,
-                            NumberOfLikes = item.NumberOfLikes,
-                            LastModificationDate = item.LastModificationDate,
-                            UserName = commentUser.UserName,
-                            CommentUsers=item.CommentUser,
-                            isLiked=result ,
-
-                        };
+                        CommentListModel commentModel = _mapper.Map<CommentListModel>(item);
+                        commentModel.CommentOwner = commentUser.UserName;
+                        commentModel.CommentUsers = item.CommentUser;
+                        commentModel.isLiked = result;
+                    
                         commentModels.Add(commentModel);
                     }
 
@@ -137,11 +127,9 @@ namespace Project.Blog.Web.Controllers
                 CommentDate = DateTime.Now,
                 NumberOfLikes = 0,
                 LastModificationDate = DateTime.Now,
-                CommentOwnerId = currentUser?.Id,
+                UserId = currentUser?.Id,
                 SharingId = sharingId,
-
-
-        };
+             };
             await _commentService.AddAsync(comment);
             return RedirectToAction("Detail", sharingId);
         }
@@ -182,7 +170,6 @@ namespace Project.Blog.Web.Controllers
             {
                 var emailIsExist=await _userManager.FindByEmailAsync(model.Email);
                 var userNameIsExist = await _userManager.Users.Where(u=>u.UserName==model.Username).ToListAsync();
-                //await _userService.GetByUserNameAsync(model.Username);
                 if (emailIsExist!=null)
                 {
                     ViewBag.EmailError = "Email is already taken.";

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -17,44 +18,37 @@ namespace Project.Blog.Web.Controllers
         private readonly UserManager<User> _userManager;
         private readonly ISharingService _sharingService;
         private readonly ICommentService _commentService;
-        public ProfileController(ICommentService commentService, SignInManager<User> signInManager, UserManager<User> userManager,ISharingService sharingService)
+        private readonly IMapper _mapper;
+        public ProfileController(IMapper mapper,ICommentService commentService, SignInManager<User> signInManager, UserManager<User> userManager,ISharingService sharingService)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _sharingService = sharingService;
             _commentService = commentService;
+            _mapper = mapper;
         }
         public async Task<IActionResult> IndexAsync()
         {
             User currentUser= await GetCurrentUserAsync();
             List<Sharing> sharings = await _sharingService.GetAllByUserIdAsync(currentUser.Id);
-            foreach(var i in sharings)
-            {
-                var a = i;
-            }
+            
             List<SharingListModel> models = new List<SharingListModel>();
 
             foreach (var item in sharings)
             {
+                //SharingListModel sharingListModel=_mapper.Map<SharingListModel>(item);
                 string userId = item.UserId.ToString();
                 var user = await _userManager.FindByIdAsync(userId);
                 int numberOfComment = 0;
                 if (item.Comments != null)
                 {
                     numberOfComment = item.Comments.Count;
-                }
+                }                
+                SharingListModel model = _mapper.Map<SharingListModel>(item);
+                model.UserName = user.UserName;
+                model.numberOfLikes = 5;
+                model.numberOfComments = 10;
                 
-                SharingListModel model = new SharingListModel
-                {
-                    Id = item.Id,
-                    Title = item.Title,
-                    Description = item.Description,
-                    SharingDate = item.SharingDate,
-                    UserName = user.UserName,
-                    NumberOfComment = numberOfComment,
-                    NumberOfLike = 5,
-
-                };
                 models.Add(model);
 
             }
@@ -67,10 +61,11 @@ namespace Project.Blog.Web.Controllers
             UserListModel model;
             if (user != null)
             {
-                model = new UserListModel
+                model=_mapper.Map<UserListModel>(user);
+                /*model = new UserListModel
                 {
                     Id = user.Id,
-                    Username = user.UserName,
+                    UserName = user.UserName,
                     Gender = user.Gender,
                     Name = user.Name,
                     LastName = user.LastName,
@@ -78,7 +73,7 @@ namespace Project.Blog.Web.Controllers
                     Sharings = user.Sharings,
                     Comments = user.Comments,
                     Email = user.Email,
-                };
+                };*/
             }
             else
             {
@@ -93,9 +88,9 @@ namespace Project.Blog.Web.Controllers
             var id = model.Id.ToString();
             if (id != null)
             {
-                User user = await _userManager.FindByIdAsync(id);
+                User user=_mapper.Map<User>(await _userManager.FindByIdAsync(id));
                 user.Name = model.Name;
-                user.UserName = model.Username;
+                user.UserName = model.UserName;
                 user.LastName = model.LastName;
                 user.Gender = model.Gender;
                 user.PhoneNumber = model.PhoneNumber;
@@ -129,16 +124,16 @@ namespace Project.Blog.Web.Controllers
                     Title = sharing.Title,
                     Description = sharing.Description,
                     SharingDate = sharing.SharingDate,
-                    UserName = user.UserName,
+                    //UserName = user.UserName,
                 };
                 List<Comment> comments = await _commentService.GetAllBySharingIdAsync(id);
                 List<CommentListModel> commentModels = new List<CommentListModel>();
                 foreach (var item in comments)
                 {
 
-                    if (item.CommentOwnerId != null)
+                    if (item.UserId != null)
                     {
-                        string userId = item.CommentOwnerId.ToString();
+                        string userId = item.UserId.ToString();
                         var commentUser = await _userManager.FindByIdAsync(userId);
 
                         var result = await _commentService.isLiked(item.Id, currentUser.Id);
@@ -149,7 +144,7 @@ namespace Project.Blog.Web.Controllers
                             CommentDate = item.CommentDate,
                             NumberOfLikes = item.NumberOfLikes,
                             LastModificationDate = item.LastModificationDate,
-                            UserName = commentUser.UserName,
+                            //UserName = commentUser.UserName,
                             CommentUsers = item.CommentUser,
                             isLiked = result,
 
@@ -178,7 +173,7 @@ namespace Project.Blog.Web.Controllers
                 CommentDate = DateTime.Now,
                 NumberOfLikes = 0,
                 LastModificationDate = DateTime.Now,
-                CommentOwnerId = currentUser?.Id,
+                UserId = currentUser?.Id,
                 SharingId = sharingId,
                 
             };

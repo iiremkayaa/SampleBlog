@@ -50,7 +50,7 @@
                         <div class="row">
                             <div style="flex:1">
                                 <div style="display:inline-block">
-                                    <h5 class="">@comment.UserName</h5>
+                                    <h5 class="">@comment.CommentOwner</h5>
                                 </div>
                                 <div style="display:inline-block;float:right;color:darkgray">
                                     @convertDate(comment.LastModificationDate)
@@ -63,7 +63,7 @@
                         <div class="row">
                             <div style="display: flex; justify-content: flex-end;/* width: 100%;*/ padding: 0;flex:1">
                                 @{
-                                    if (@ViewBag.User == comment.UserName)
+                                    if (@ViewBag.User == comment.CommentOwner)
                                     {
                                         <input class="btn btn-link pr-2" type="button" style="color:burlywood;text-align:right;padding:0" id="deleteComment" onclick="location.href='@Url.Action("DeleteComment", "Home", new { id = comment.Id, sharingId = @Model.Id })'" value="Delete" />
 
@@ -89,10 +89,10 @@
 
                     </div>
                 </div>
-            }
+                                            }
 
-        }
-    }
+                                        }
+                                    }
 }
 
 

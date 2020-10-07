@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -15,12 +16,14 @@ namespace Project.Blog.Web.Controllers
         private readonly ISharingService _sharingService;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        private readonly IMapper _mapper;
         public ShareController(ISharingService sharingService, UserManager<User> userManager,
-            SignInManager<User> signInManager)
+            SignInManager<User> signInManager, IMapper mapper)
         {
             _sharingService = sharingService;
             _userManager = userManager;
             _signInManager = signInManager;
+            _mapper = mapper;
 
         }
         [Authorize]
@@ -34,14 +37,13 @@ namespace Project.Blog.Web.Controllers
             if (ModelState.IsValid)
             {
                 var currentUser = await GetCurrentUserAsync();
-                Sharing sharing = new Sharing
+                Sharing sharing=  _mapper.Map<Sharing>(model);
+                if (currentUser != null)
                 {
-                    Title = model.Title,
-                    Description = model.Description,
-                    CategoryId = model.CategoryId,
-                    SharingDate = DateTime.Now,
-                    UserId = currentUser?.Id
-                };
+                    sharing.UserId = currentUser.Id;
+                }
+                sharing.SharingDate = DateTime.Now;
+                
                 await _sharingService.AddAsync(sharing);
                 return RedirectToAction("Index", "Home");
                
