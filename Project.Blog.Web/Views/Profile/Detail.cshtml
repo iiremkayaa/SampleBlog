@@ -71,7 +71,7 @@
                                 @{
                                     if (@ViewBag.User == comment.CommentOwner)
                                     {
-                                        <input class="btn btn-link pr-2" type="button" style="color:burlywood;text-align:right;padding:0" id="deleteComment" onclick="location.href='@Url.Action("DeleteComment", "Home", new { id = comment.Id, sharingId = @Model.Id })'" value="Delete" />
+                                        <input class="btn btn-link pr-2" type="button" style="color:burlywood;text-align:right;padding:0" id="deleteComment" onclick="location.href='@Url.Action("DeleteComment", "Profile", new { id = comment.Id, sharingId = @Model.Id })'" value="Delete" />
 
                                     }
 
@@ -79,11 +79,11 @@
                                 @{
                                     if (@comment.isLiked)
                                     {
-                                        <input class="btn btn-link pl-2" type="button" style="color:red;text-align:right;padding:0" id="likeComment" onclick="location.href='@Url.Action("LikeComment", "Home", new { id = comment.Id, sharingId = @Model.Id })'" value="Liked (@comment.NumberOfLikes) " />
+                                        <input class="btn btn-link pl-2" type="button" style="color:red;text-align:right;padding:0" id="likeComment" onclick="location.href='@Url.Action("LikeComment", "Profile", new { id = comment.Id, sharingId = @Model.Id })'" value="Liked (@comment.NumberOfLikes) " />
                                     }
                                     else
                                     {
-                                        <input class="btn btn-link pl-2" type="button" style="color:green;text-align:right;padding:0" id="likeComment" onclick="location.href='@Url.Action("LikeComment", "Home", new { id = comment.Id, sharingId = @Model.Id })'" value="Like (@comment.NumberOfLikes) " />
+                                        <input class="btn btn-link pl-2" type="button" style="color:green;text-align:right;padding:0" id="likeComment" onclick="location.href='@Url.Action("LikeComment", "Profile", new { id = comment.Id, sharingId = @Model.Id })'" value="Like (@comment.NumberOfLikes) " />
 
                                     }
                                 }
@@ -115,7 +115,7 @@
         <hr>
         <div>
 
-            @Model.SharingDate.ToString("dddd, MMMM dd yyyy", new System.Globalization.CultureInfo("en-US")) by  <a href="#">sa</a>
+            @Model.SharingDate.ToString("dddd, MMMM dd yyyy", new System.Globalization.CultureInfo("en-US")) by  <a href="#">@Model.UserName</a>
 
         </div>
 
@@ -133,7 +133,7 @@
         <div class="card my-4">
             <h5 class="card-header">Leave a Comment:</h5>
             <div class="card-body">
-                <form asp-action="Detail" asp-controller="Home" method="post">
+                <form asp-action="Detail" asp-controller="Profile" method="post">
                     <div class="form-group">
                         <textarea name="description" class="form-control" rows="3"></textarea>
                     </div>

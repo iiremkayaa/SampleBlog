@@ -34,8 +34,7 @@ namespace Project.Blog.Web.Controllers
         }
         public async Task<IActionResult> IndexAsync(int? categoryId,string key)
         {
-            User kullancıılar = await _userManager.FindByNameAsync("test");
-            var ss = kullancıılar;
+            
             List<SharingListModel> models = new List<SharingListModel>();
             List<Sharing> sharings = new List<Sharing>();
 
@@ -66,9 +65,6 @@ namespace Project.Blog.Web.Controllers
 
                 models.Add(model);
                 
-              
-                
-
             }
             return View(models);
 
@@ -76,9 +72,11 @@ namespace Project.Blog.Web.Controllers
         }
         public async Task<IActionResult> Detail(int id)
         {
+
             var currentUser = await GetCurrentUserAsync();
             var x = currentUser;
             Sharing sharing = await _sharingService.FindByIdAsync(id);
+            var ne = sharing;
             if (sharing != null)
             {
                 int? ownerId = sharing.UserId;
@@ -120,15 +118,18 @@ namespace Project.Blog.Web.Controllers
         public async Task<IActionResult> Detail(string description, int sharingId)
         {
             var currentUser = await GetCurrentUserAsync();
-            
+
             Comment comment = new Comment
             {
                 Description = description,
                 CommentDate = DateTime.Now,
                 NumberOfLikes = 0,
                 LastModificationDate = DateTime.Now,
-                UserId = currentUser?.Id,
+                UserId = currentUser.Id,
                 SharingId = sharingId,
+                /*User = await _userManager.FindByIdAsync(currentUser.Id.ToString()),
+                Sharing=await _sharingService.FindByIdAsync(sharingId),*/
+
              };
             await _commentService.AddAsync(comment);
             return RedirectToAction("Detail", sharingId);

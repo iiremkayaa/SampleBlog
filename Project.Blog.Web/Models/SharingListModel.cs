@@ -17,8 +17,7 @@ namespace Project.Blog.Web.Models
         public int? CategoryId { get; set; }
         public string CategoryName { get; set; }
         public DateTime SharingDate { get; set; }
-        public int numberOfLikes { get; set; }
-        public int numberOfComments { get; set; }
+        public int NumberOfComments { get; set; }
 
     }
 }
