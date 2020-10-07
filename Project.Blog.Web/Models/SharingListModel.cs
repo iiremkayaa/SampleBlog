@@ -11,10 +11,13 @@ namespace Project.Blog.Web.Models
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public DateTime SharingDate { get; set; }
+        public int? UserId { get; set; }
         public string UserName { get; set; }
-        public int NumberOfComment { get; set; }
-        public int NumberOfLike { get; set; }
+        public List<Comment> Comments { get; set; }
+        public int? CategoryId { get; set; }
+        public string CategoryName { get; set; }
+        public DateTime SharingDate { get; set; }
+        public int NumberOfComments { get; set; }
 
     }
 }

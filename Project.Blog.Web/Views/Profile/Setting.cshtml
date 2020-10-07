@@ -14,9 +14,9 @@
             <form asp-action="Setting" asp-controller="Profile" method="post">
                 <input name="Id" type="hidden" value="@Model.Id" />
                 <div class="form-group">
-                    <label asp-for="@Model.Username">Username</label>
-                    <input asp-for="@Model.Username" type="text" class="form-control">
-                    <span asp-validation-for="@Model.Username" class="text-danger"></span>
+                    <label asp-for="@Model.UserName">Username</label>
+                    <input asp-for="@Model.UserName" type="text" class="form-control">
+                    <span asp-validation-for="@Model.UserName" class="text-danger"></span>
                 </div>
                 <div class="row">
                     <div class="col form-group">

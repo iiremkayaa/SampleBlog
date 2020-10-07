@@ -31,16 +31,14 @@
                     <p class="card-text">@displayShortDescription(@sharing.Description)</p>
                     <a  asp-action="Detail" asp-route-id="@sharing.Id" class="btn btn-primary">Show Details</a>
                 </div>
-                <div class="card-footer text-muted">
-                    <div>
+                <div class="card-footer text-muted container">
+                    <div class="d-inline-block ">
                         @sharing.SharingDate.ToString("dddd, MMMM dd yyyy", new System.Globalization.CultureInfo("en-US"))
                     </div>
-                    <div>
-                        @sharing.NumberOfComment Comments
+                    <div class="d-inline-block float-right">
+                        @sharing.NumberOfComments Comments
                     </div>
-                    <div>
-                        @sharing.NumberOfLike Like
-                    </div>
+                    
                 </div>
 
             </div>

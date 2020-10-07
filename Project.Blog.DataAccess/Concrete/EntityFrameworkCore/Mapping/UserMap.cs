@@ -15,7 +15,7 @@ namespace Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Mapping
             builder.Property(I => I.Name).HasMaxLength(100);
             builder.Property(I => I.LastName).HasMaxLength(100);
             builder.HasMany(I => I.Sharings).WithOne(I => I.User).HasForeignKey(I => I.UserId);
-            builder.HasMany(I => I.Comments).WithOne(I => I.CommentOwner).HasForeignKey(I => I.CommentOwnerId);
+            builder.HasMany(I => I.Comments).WithOne(I => I.User).HasForeignKey(I => I.UserId);
             builder.HasMany(I => I.CommentUser).WithOne(I => I.User).HasForeignKey(I => I.UserId);
 
         }

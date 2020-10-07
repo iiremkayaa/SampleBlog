@@ -14,8 +14,8 @@ namespace Project.Blog.Entities.Concrete
 		public DateTime LastModificationDate { get; set; }
 		public int? SharingId { get; set; }
 		public Sharing Sharing { get; set; }
-		public int? CommentOwnerId { get; set; }
-		public User CommentOwner { get; set; }
+		public int? UserId { get; set; }
+		public User User { get; set; }
 		public List<CommentUser> CommentUser { get; set; }
 	}
 }
