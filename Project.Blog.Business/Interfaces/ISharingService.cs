@@ -11,5 +11,6 @@ namespace Project.Blog.Business.Interfaces
         Task<List<Sharing>> GetAllByCategoryIdAsync(int id);
         Task<List<Sharing>> SearchSharingAsync(string key);
         Task<List<Sharing>> GetAllSortedByDateAsync();
+        Task<List<Sharing>> GetAllByUserIdAsync(int id);
     }
 }

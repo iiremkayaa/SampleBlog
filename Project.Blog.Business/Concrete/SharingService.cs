@@ -24,6 +24,11 @@ namespace Project.Blog.Business.Concrete
             return await _sharingRepository.GetAllByCategoryIdAsync(id);
            
         }
+        public async Task<List<Sharing>> GetAllByUserIdAsync(int id)
+        {
+            return await _sharingRepository.GetAllByUserIdAsync(id);
+
+        }
 
         public async Task<List<Sharing>> GetAllSortedByDateAsync()
         {

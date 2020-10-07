@@ -31,6 +31,7 @@ namespace Project.Blog.Web.Controllers
         }
         public async Task<IActionResult> IndexAsync(int? categoryId,string key)
         {
+
             List<SharingListModel> models = new List<SharingListModel>();
             List<Sharing> sharings = new List<Sharing>();
 
@@ -108,7 +109,7 @@ namespace Project.Blog.Web.Controllers
                             LastModificationDate = item.LastModificationDate,
                             UserName = commentUser.UserName,
                             CommentUsers=item.CommentUser,
-                            isLiked=result ? "Liked" :" Like",
+                            isLiked=result ,
 
                         };
                         commentModels.Add(commentModel);
@@ -118,6 +119,7 @@ namespace Project.Blog.Web.Controllers
                 }
 
                 ViewBag.Comments = commentModels;
+                ViewBag.User = currentUser.UserName;
                 return View(model);
             }
             return BadRequest("");
@@ -128,6 +130,7 @@ namespace Project.Blog.Web.Controllers
         public async Task<IActionResult> Detail(string description, int sharingId)
         {
             var currentUser = await GetCurrentUserAsync();
+            
             Comment comment = new Comment
             {
                 Description = description,
@@ -135,8 +138,10 @@ namespace Project.Blog.Web.Controllers
                 NumberOfLikes = 0,
                 LastModificationDate = DateTime.Now,
                 CommentOwnerId = currentUser?.Id,
-                SharingId = sharingId
-            };
+                SharingId = sharingId,
+
+
+        };
             await _commentService.AddAsync(comment);
             return RedirectToAction("Detail", sharingId);
         }

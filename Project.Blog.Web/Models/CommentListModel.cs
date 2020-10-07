@@ -16,7 +16,7 @@ namespace Project.Blog.Web.Models
 		public string UserName { get; set; }
 
 		public List<CommentUser> CommentUsers { get; set; }
-		public string isLiked { get; set; }
+		public bool isLiked { get; set; }
 
 
 
