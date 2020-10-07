@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project.Blog.Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,6 +13,8 @@ namespace Project.Blog.Web.Models
         public string Description { get; set; }
         public DateTime SharingDate { get; set; }
         public string UserName { get; set; }
+        public int NumberOfComment { get; set; }
+        public int NumberOfLike { get; set; }
 
     }
 }

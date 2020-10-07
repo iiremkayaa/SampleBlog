@@ -1,0 +1,171 @@
+﻿
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "_Layout";
+}
+
+@model SharingListModel
+@{
+    var comments = ViewBag.Comments;
+    string convertDate(DateTime commentDate)
+    {
+
+        var difference = (DateTime.Now - commentDate).TotalDays;
+        if (difference < 1)
+        {
+            difference = Convert.ToInt32((DateTime.Now - commentDate).TotalHours);
+            if (difference == 0)
+            {
+                return Convert.ToInt32((DateTime.Now - commentDate).TotalMinutes).ToString() + "m";
+            }
+            else
+            {
+                return Convert.ToInt32((DateTime.Now - commentDate).TotalHours).ToString() + "h";
+
+            }
+
+        }
+        else if (difference > 1 && difference < 30)
+        {
+            return Convert.ToInt32(difference).ToString() + "d";
+        }
+        else if (difference > 30 && difference < 365)
+        {
+            return Convert.ToInt32((((DateTime.Now - commentDate).TotalDays) / 30) - 1).ToString() + "m";
+
+        }
+        else if (difference > 365)
+        {
+            return Convert.ToInt32((((DateTime.Now - commentDate).TotalDays) / 365)).ToString() + "y";
+        }
+        else
+        {
+            return "";
+        }
+
+    }
+    void GetComments(List<CommentListModel> comments)
+    {
+        if (comments.Count > 0)
+        {
+            foreach (var comment in comments)
+            {
+                <div class="media mb-4">
+                    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                    <div class="container" style="">
+                        <div class="row">
+                            <div style="flex:1">
+                                <div style="display:inline-block">
+                                    <h5 class="">@comment.UserName</h5>
+                                </div>
+                                <div style="display:inline-block;float:right;color:darkgray">
+                                    @convertDate(comment.LastModificationDate)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            @comment.Description
+                        </div>
+                        <div class="row">
+                            <div style="display: flex; justify-content: flex-end;/* width: 100%;*/ padding: 0;flex:1">
+                                @{
+                                    if (@ViewBag.User == comment.UserName)
+                                    {
+                                        <input class="btn btn-link pr-2" type="button" style="color:burlywood;text-align:right;padding:0" id="deleteComment" onclick="location.href='@Url.Action("DeleteComment", "Home", new { id = comment.Id, sharingId = @Model.Id })'" value="Delete" />
+
+                                    }
+
+                                }
+                                @{
+                                    if (@comment.isLiked)
+                                    {
+                                        <input class="btn btn-link pl-2" type="button" style="color:red;text-align:right;padding:0" id="likeComment" onclick="location.href='@Url.Action("LikeComment", "Home", new { id = comment.Id, sharingId = @Model.Id })'" value="Liked (@comment.NumberOfLikes) " />
+                                    }
+                                    else
+                                    {
+                                        <input class="btn btn-link pl-2" type="button" style="color:green;text-align:right;padding:0" id="likeComment" onclick="location.href='@Url.Action("LikeComment", "Home", new { id = comment.Id, sharingId = @Model.Id })'" value="Like (@comment.NumberOfLikes) " />
+
+                                    }
+                                }
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            }
+
+        }
+    }
+}
+
+
+
+
+<!-- Blog Entries Column -->
+<div class="col">
+
+    <h1 class="my-4">
+    </h1>
+    <div>
+        <!-- Title -->
+        <h1 class="mt-4">@Model.Title</h1>
+        <hr>
+        <div>
+
+            @Model.SharingDate.ToString("dddd, MMMM dd yyyy", new System.Globalization.CultureInfo("en-US")) by  <a href="#">@Model.UserName</a>
+
+        </div>
+
+
+
+        <hr>
+
+        <!-- Post Content -->
+        <p class="lead">@Model.Description</p>
+
+
+        <hr>
+
+        <!-- Comments Form -->
+        <div class="card my-4">
+            <h5 class="card-header">Leave a Comment:</h5>
+            <div class="card-body">
+                <form asp-action="Detail" asp-controller="Home" method="post">
+                    <div class="form-group">
+                        <textarea name="description" class="form-control" rows="3"></textarea>
+                    </div>
+                    <div>
+                        <input name="sharingId" type="hidden" value="@Model.Id" />
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Send">
+                </form>
+            </div>
+        </div>
+
+        <!-- Single Comment -->
+
+        @{
+            GetComments(comments);
+        }
+
+    </div>
+
+    <!-- Pagination -->
+
+
+</div>
+
+
+@section Scripts{
+
+
+
+    <script>
+
+
+    </script>
+
+}

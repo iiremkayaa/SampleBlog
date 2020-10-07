@@ -29,12 +29,18 @@
                 <div class="card-body">
                     <h2 class="card-title">@sharing.Title</h2>
                     <p class="card-text">@displayShortDescription(@sharing.Description)</p>
-                    <a asp-action="Detail" asp-route-id="@sharing.Id" class="btn btn-primary">Show Details</a>
+                    <a  asp-action="Detail" asp-route-id="@sharing.Id" class="btn btn-primary">Show Details</a>
                 </div>
                 <div class="card-footer text-muted">
-
-                    @sharing.SharingDate.ToString("dddd, MMMM dd yyyy", new System.Globalization.CultureInfo("en-US")) 
-
+                    <div>
+                        @sharing.SharingDate.ToString("dddd, MMMM dd yyyy", new System.Globalization.CultureInfo("en-US"))
+                    </div>
+                    <div>
+                        @sharing.NumberOfComment Comments
+                    </div>
+                    <div>
+                        @sharing.NumberOfLike Like
+                    </div>
                 </div>
 
             </div>
