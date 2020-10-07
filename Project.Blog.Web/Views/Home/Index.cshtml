@@ -21,7 +21,10 @@
                 <div class="card-body">
                     <h2 class="card-title">@sharing.Title</h2>
                     <p class="card-text">@displayShortDescription(@sharing.Description)</p>
-                    <a asp-action="Detail" asp-route-id="@sharing.Id" class="btn btn-primary">Show Details</a>
+                    <div style="display:flex;justify-content: flex-end;">
+                        <a  asp-action="Detail" asp-route-id="@sharing.Id" class="btn btn-primary">Show Details</a>
+
+                    </div>
                 </div>
                 <div class="card-footer text-muted">
                    
