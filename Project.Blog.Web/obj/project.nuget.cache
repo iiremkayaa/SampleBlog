@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wl+oWZlQCwwYIyI2CmB8o3DxlTw4ZM4rM0oskUpsNOCc01bf7cBLnGrxfuDjykwzDsmrNy9ocyuU0vu0D19chw==",
+  "dgSpecHash": "V400KRLbSQLdz3i1K8lInNMEeHEzkl619kq8s4JN5yGWu/1xCCkiQC9fqo4z0z4eMCdzEfVDJS/Yrss/CHa3JQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Project.Blog.Web\\Project.Blog.Web.csproj",
+  "projectFilePath": "C:\\Users\\Irem\\Documents\\GitHub\\SampleBlog\\Project.Blog.Web\\Project.Blog.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Irem\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
     "C:\\Users\\Irem\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.0.1\\automapper.extensions.microsoft.dependencyinjection.8.0.1.nupkg.sha512",

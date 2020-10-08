@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Project.Blog.Business\\Project.Blog.Business.csproj": {}
+    "C:\\Users\\Irem\\Documents\\GitHub\\SampleBlog\\Project.Blog.Business\\Project.Blog.Business.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Blog\\Project.Blog.Entities.csproj": {
+    "C:\\Users\\Irem\\Documents\\GitHub\\SampleBlog\\Blog\\Project.Blog.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Blog\\Project.Blog.Entities.csproj",
+        "projectUniqueName": "C:\\Users\\Irem\\Documents\\GitHub\\SampleBlog\\Blog\\Project.Blog.Entities.csproj",
         "projectName": "Project.Blog.Entities",
-        "projectPath": "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Blog\\Project.Blog.Entities.csproj",
+        "projectPath": "C:\\Users\\Irem\\Documents\\GitHub\\SampleBlog\\Blog\\Project.Blog.Entities.csproj",
         "packagesPath": "C:\\Users\\Irem\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Blog\\obj\\",
+        "outputPath": "C:\\Users\\Irem\\Documents\\GitHub\\SampleBlog\\Blog\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Irem\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -62,14 +62,14 @@
         }
       }
     },
-    "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Project.Blog.Business\\Project.Blog.Business.csproj": {
+    "C:\\Users\\Irem\\Documents\\GitHub\\SampleBlog\\Project.Blog.Business\\Project.Blog.Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Project.Blog.Business\\Project.Blog.Business.csproj",
+        "projectUniqueName": "C:\\Users\\Irem\\Documents\\GitHub\\SampleBlog\\Project.Blog.Business\\Project.Blog.Business.csproj",
         "projectName": "Project.Blog.Business",
-        "projectPath": "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Project.Blog.Business\\Project.Blog.Business.csproj",
+        "projectPath": "C:\\Users\\Irem\\Documents\\GitHub\\SampleBlog\\Project.Blog.Business\\Project.Blog.Business.csproj",
         "packagesPath": "C:\\Users\\Irem\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Project.Blog.Business\\obj\\",
+        "outputPath": "C:\\Users\\Irem\\Documents\\GitHub\\SampleBlog\\Project.Blog.Business\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Irem\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -85,8 +85,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Project.Blog.DataAccess\\Project.Blog.DataAccess.csproj": {
-                "projectPath": "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Project.Blog.DataAccess\\Project.Blog.DataAccess.csproj"
+              "C:\\Users\\Irem\\Documents\\GitHub\\SampleBlog\\Project.Blog.DataAccess\\Project.Blog.DataAccess.csproj": {
+                "projectPath": "C:\\Users\\Irem\\Documents\\GitHub\\SampleBlog\\Project.Blog.DataAccess\\Project.Blog.DataAccess.csproj"
               }
             }
           }
@@ -118,14 +118,14 @@
         }
       }
     },
-    "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Project.Blog.DataAccess\\Project.Blog.DataAccess.csproj": {
+    "C:\\Users\\Irem\\Documents\\GitHub\\SampleBlog\\Project.Blog.DataAccess\\Project.Blog.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Project.Blog.DataAccess\\Project.Blog.DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\Irem\\Documents\\GitHub\\SampleBlog\\Project.Blog.DataAccess\\Project.Blog.DataAccess.csproj",
         "projectName": "Project.Blog.DataAccess",
-        "projectPath": "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Project.Blog.DataAccess\\Project.Blog.DataAccess.csproj",
+        "projectPath": "C:\\Users\\Irem\\Documents\\GitHub\\SampleBlog\\Project.Blog.DataAccess\\Project.Blog.DataAccess.csproj",
         "packagesPath": "C:\\Users\\Irem\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Project.Blog.DataAccess\\obj\\",
+        "outputPath": "C:\\Users\\Irem\\Documents\\GitHub\\SampleBlog\\Project.Blog.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Irem\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -141,8 +141,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Blog\\Project.Blog.Entities.csproj": {
-                "projectPath": "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Blog\\Project.Blog.Entities.csproj"
+              "C:\\Users\\Irem\\Documents\\GitHub\\SampleBlog\\Blog\\Project.Blog.Entities.csproj": {
+                "projectPath": "C:\\Users\\Irem\\Documents\\GitHub\\SampleBlog\\Blog\\Project.Blog.Entities.csproj"
               }
             }
           }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Blog\\Project.Blog.Entities.csproj": {}
+    "C:\\Users\\Irem\\Documents\\GitHub\\SampleBlog\\Blog\\Project.Blog.Entities.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Blog\\Project.Blog.Entities.csproj": {
+    "C:\\Users\\Irem\\Documents\\GitHub\\SampleBlog\\Blog\\Project.Blog.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Blog\\Project.Blog.Entities.csproj",
+        "projectUniqueName": "C:\\Users\\Irem\\Documents\\GitHub\\SampleBlog\\Blog\\Project.Blog.Entities.csproj",
         "projectName": "Project.Blog.Entities",
-        "projectPath": "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Blog\\Project.Blog.Entities.csproj",
+        "projectPath": "C:\\Users\\Irem\\Documents\\GitHub\\SampleBlog\\Blog\\Project.Blog.Entities.csproj",
         "packagesPath": "C:\\Users\\Irem\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Blog\\obj\\",
+        "outputPath": "C:\\Users\\Irem\\Documents\\GitHub\\SampleBlog\\Blog\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Irem\\AppData\\Roaming\\NuGet\\NuGet.Config",

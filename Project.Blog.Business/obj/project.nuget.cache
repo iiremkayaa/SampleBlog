@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6tU1lZeODPGdI2aMdClTKeMHcPna1ARwVFcXmJSJpqpvyzBHAwjirAwVzrreoVZq8Sv+r9zFulCOfBHlyumvfA==",
+  "dgSpecHash": "z3g+d5h+2MFbrMGwjhwvpsRidyGQ0+hW1P/pd+6jJjMgNmBEYDd6OK8fF2o3+XOaP1S89s7Rlxv8E8aWy+YgRw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Project.Blog.Business\\Project.Blog.Business.csproj",
+  "projectFilePath": "C:\\Users\\Irem\\Documents\\GitHub\\SampleBlog\\Project.Blog.Business\\Project.Blog.Business.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Irem\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.8\\microsoft.aspnetcore.cryptography.internal.3.1.8.nupkg.sha512",
     "C:\\Users\\Irem\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.8\\microsoft.aspnetcore.cryptography.keyderivation.3.1.8.nupkg.sha512",

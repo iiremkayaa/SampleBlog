@@ -16,3 +16,12 @@ C:\Users\Irem\Documents\GitHub\BlogMvc\Blog\obj\Debug\netcoreapp3.1\Project.Blog
 C:\Users\Irem\Documents\GitHub\BlogMvc\Blog\obj\Debug\netcoreapp3.1\Project.Blog.Entities.dll
 C:\Users\Irem\Documents\GitHub\BlogMvc\Blog\obj\Debug\netcoreapp3.1\Project.Blog.Entities.pdb
 C:\Users\Irem\Documents\GitHub\BlogMvc\Blog\obj\Debug\netcoreapp3.1\Project.Blog.Entities.csproj.CoreCompileInputs.cache
+C:\Users\Irem\Documents\GitHub\SampleBlog\Blog\bin\Debug\netcoreapp3.1\Project.Blog.Entities.deps.json
+C:\Users\Irem\Documents\GitHub\SampleBlog\Blog\bin\Debug\netcoreapp3.1\Project.Blog.Entities.dll
+C:\Users\Irem\Documents\GitHub\SampleBlog\Blog\bin\Debug\netcoreapp3.1\Project.Blog.Entities.pdb
+C:\Users\Irem\Documents\GitHub\SampleBlog\Blog\obj\Debug\netcoreapp3.1\Project.Blog.Entities.csprojAssemblyReference.cache
+C:\Users\Irem\Documents\GitHub\SampleBlog\Blog\obj\Debug\netcoreapp3.1\Project.Blog.Entities.AssemblyInfoInputs.cache
+C:\Users\Irem\Documents\GitHub\SampleBlog\Blog\obj\Debug\netcoreapp3.1\Project.Blog.Entities.AssemblyInfo.cs
+C:\Users\Irem\Documents\GitHub\SampleBlog\Blog\obj\Debug\netcoreapp3.1\Project.Blog.Entities.csproj.CoreCompileInputs.cache
+C:\Users\Irem\Documents\GitHub\SampleBlog\Blog\obj\Debug\netcoreapp3.1\Project.Blog.Entities.dll
+C:\Users\Irem\Documents\GitHub\SampleBlog\Blog\obj\Debug\netcoreapp3.1\Project.Blog.Entities.pdb
