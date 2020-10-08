@@ -51,12 +51,12 @@
             foreach (var comment in comments)
             {
                 <div class="media mb-4">
-                    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                    
                     <div class="container" style="">
                         <div class="row">
                             <div style="flex:1">
                                 <div style="display:inline-block">
-                                    <h5 class="">@comment.CommentOwner</h5>
+                                    <h5 class="">&#x40;@comment.CommentOwner</h5>
                                 </div>
                                 <div style="display:inline-block;float:right;color:darkgray">
                                     @convertDate(comment.LastModificationDate)

@@ -171,7 +171,7 @@ namespace Project.Blog.Web.Controllers
         public async Task<IActionResult> DeleteSharing(int id,int user)
         {
             await _sharingService.RemoveAsync(id);
-            return RedirectToAction("Index", "Profile",new { id = user });
+            return RedirectToAction("Index", "Profile");
         }
         [Authorize]
         public async Task<IActionResult> LikeComment(int id, int sharingId)

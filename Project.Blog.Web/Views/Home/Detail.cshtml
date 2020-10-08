@@ -44,51 +44,50 @@
         {
             foreach (var comment in comments)
             {
-                <div class="media mb-4">
-                    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                    <div class="container" style="">
-                        <div class="row">
-                            <div style="flex:1">
-                                <div style="display:inline-block">
-                                    <h5 class="">@comment.CommentOwner</h5>
-                                </div>
-                                <div style="display:inline-block;float:right;color:darkgray">
-                                    @convertDate(comment.LastModificationDate)
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            @comment.Description
-                        </div>
-                        <div class="row">
-                            <div style="display: flex; justify-content: flex-end;/* width: 100%;*/ padding: 0;flex:1">
-                                @{
-                                    if (@ViewBag.User == comment.CommentOwner)
-                                    {
-                                        <input class="btn btn-link pr-2" type="button" style="color:burlywood;text-align:right;padding:0" id="deleteComment" onclick="location.href='@Url.Action("DeleteComment", "Home", new { id = comment.Id, sharingId = @Model.Id })'" value="Delete" />
-
-                                    }
-
-                                }
-                                @{
-                                    if (@comment.isLiked)
-                                    {
-                                        <input class="btn btn-link pl-2" type="button" style="color:red;text-align:right;padding:0" id="likeComment" onclick="location.href='@Url.Action("LikeComment", "Home", new { id = comment.Id, sharingId = @Model.Id })'" value="Liked (@comment.NumberOfLikes) " />
-                                    }
-                                    else
-                                    {
-                                        <input class="btn btn-link pl-2" type="button" style="color:green;text-align:right;padding:0" id="likeComment" onclick="location.href='@Url.Action("LikeComment", "Home", new { id = comment.Id, sharingId = @Model.Id })'" value="Like (@comment.NumberOfLikes) " />
-
-                                    }
-                                }
-
-
-                            </div>
-                        </div>
-                        
-
+    <div class="media mb-4">
+        <div class="container" style="">
+            <div class="row">
+                <div style="flex:1">
+                    <div style="display:inline-block">
+                        <h5 class="">&#x40;@comment.CommentOwner</h5>
+                    </div>
+                    <div style="display:inline-block;float:right;color:darkgray">
+                        @convertDate(comment.LastModificationDate)
                     </div>
                 </div>
+            </div>
+            <div class="row">
+                @comment.Description
+            </div>
+            <div class="row">
+                <div style="display: flex; justify-content: flex-end;/* width: 100%;*/ padding: 0;flex:1">
+                    @{
+                        if (@ViewBag.User == comment.CommentOwner)
+                        {
+                            <input class="btn btn-link pr-2" type="button" style="color:burlywood;text-align:right;padding:0" id="deleteComment" onclick="location.href='@Url.Action("DeleteComment", "Home", new { id = comment.Id, sharingId = @Model.Id })'" value="Delete" />
+
+                        }
+
+                    }
+                    @{
+                        if (@comment.isLiked)
+                        {
+                            <input class="btn btn-link pl-2" type="button" style="color:red;text-align:right;padding:0" id="likeComment" onclick="location.href='@Url.Action("LikeComment", "Home", new { id = comment.Id, sharingId = @Model.Id })'" value="Liked (@comment.NumberOfLikes) " />
+                        }
+                        else
+                        {
+                            <input class="btn btn-link pl-2" type="button" style="color:green;text-align:right;padding:0" id="likeComment" onclick="location.href='@Url.Action("LikeComment", "Home", new { id = comment.Id, sharingId = @Model.Id })'" value="Like (@comment.NumberOfLikes) " />
+
+                        }
+                    }
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
                                             }
 
                                         }
