@@ -32,7 +32,6 @@
           "Microsoft.EntityFrameworkCore.Tools": "3.1.8",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.4",
           "Project.Blog.Business": "1.0.0",
-          "Project.Blog.Dto": "1.0.0",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions.Reference": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies.Reference": "3.1.0.0",
@@ -2502,14 +2501,6 @@
         },
         "compile": {
           "Project.Blog.DataAccess.dll": {}
-        }
-      },
-      "Project.Blog.Dto/1.0.0": {
-        "runtime": {
-          "Project.Blog.Dto.dll": {}
-        },
-        "compile": {
-          "Project.Blog.Dto.dll": {}
         }
       },
       "Project.Blog.Entities/1.0.0": {
@@ -5458,11 +5449,6 @@
       "sha512": ""
     },
     "Project.Blog.DataAccess/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Project.Blog.Dto/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

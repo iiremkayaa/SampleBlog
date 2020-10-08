@@ -1,9 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Project.Blog.Entities.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Mapping
 {

@@ -171,7 +171,6 @@ C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\bin\Debug\netcoreapp3.1\
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\bin\Debug\netcoreapp3.1\libman.json
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
-C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\bin\Debug\netcoreapp3.1\Project.Blog.Dto.exe
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\bin\Debug\netcoreapp3.1\Project.Blog.Web.exe
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\bin\Debug\netcoreapp3.1\Project.Blog.Web.deps.json
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\bin\Debug\netcoreapp3.1\Project.Blog.Web.runtimeconfig.json
@@ -301,10 +300,8 @@ C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\bin\Debug\netcoreapp3.1\
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\bin\Debug\netcoreapp3.1\Project.Blog.Business.dll
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\bin\Debug\netcoreapp3.1\Project.Blog.DataAccess.dll
-C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\bin\Debug\netcoreapp3.1\Project.Blog.Dto.dll
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\bin\Debug\netcoreapp3.1\Project.Blog.Entities.dll
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\bin\Debug\netcoreapp3.1\Project.Blog.Business.pdb
-C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\bin\Debug\netcoreapp3.1\Project.Blog.Dto.pdb
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\bin\Debug\netcoreapp3.1\Project.Blog.DataAccess.pdb
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\bin\Debug\netcoreapp3.1\Project.Blog.Entities.pdb
 C:\Users\Irem\Documents\GitHub\BlogMvc\Project.Blog.Web\obj\Debug\netcoreapp3.1\Project.Blog.Web.csprojAssemblyReference.cache

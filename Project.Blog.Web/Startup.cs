@@ -13,7 +13,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Project.Blog.Business.Containers.MicrosoftIoC;
-using Project.Blog.Business.StringInfos;
 using Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Context;
 using Project.Blog.Entities.Concrete;
 using Project.Blog.Web.CustomValidator;

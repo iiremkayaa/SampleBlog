@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -57,7 +56,7 @@ namespace Project.Blog.Web.Controllers
             foreach (var item in sharings)
             {
                 string userId = item.UserId.ToString();
-                var user = await _userManager.FindByIdAsync(userId);
+                
                 SharingListModel model=_mapper.Map<SharingListModel>(item);
 
                 var owner = await _userManager.FindByIdAsync(model.UserId.ToString());
@@ -74,17 +73,13 @@ namespace Project.Blog.Web.Controllers
         {
 
             var currentUser = await GetCurrentUserAsync();
-            var x = currentUser;
             Sharing sharing = await _sharingService.FindByIdAsync(id);
-            var ne = sharing.UserId;
             
             if (sharing != null)
             {
-                int? ownerId = sharing.UserId;
                 SharingListModel model = _mapper.Map<SharingListModel>(sharing);
                 var owner = await _userManager.FindByIdAsync(model.UserId.ToString());
                 model.UserName = owner.UserName;
-                var za = model.UserId;
                 List<Comment> comments = await _commentService.GetAllBySharingIdAsync(id);
                 List<CommentListModel> commentModels = new List<CommentListModel>();
                 foreach (var item in comments)
@@ -94,8 +89,12 @@ namespace Project.Blog.Web.Controllers
                     {
                         string userId = item.UserId.ToString();
                         var commentUser = await _userManager.FindByIdAsync(userId);
-
-                        var result=await _commentService.isLiked(item.Id, currentUser.Id);
+                        bool result=false;
+                        if (currentUser != null)
+                        {
+                            result = await _commentService.isLiked(item.Id, currentUser.Id);
+                        }
+                        
                         CommentListModel commentModel = _mapper.Map<CommentListModel>(item);
                         commentModel.CommentOwner = commentUser.UserName;
                         commentModel.CommentUsers = item.CommentUser;
@@ -108,7 +107,7 @@ namespace Project.Blog.Web.Controllers
                 }
 
                 ViewBag.Comments = commentModels;
-                ViewBag.User = currentUser.UserName;
+                ViewBag.User = currentUser!=null ? currentUser.UserName: "";
                 return View(model);
             }
             return BadRequest("");
@@ -128,8 +127,7 @@ namespace Project.Blog.Web.Controllers
                 LastModificationDate = DateTime.Now,
                 UserId = currentUser.Id,
                 SharingId = sharingId,
-                /*User = await _userManager.FindByIdAsync(currentUser.Id.ToString()),
-                Sharing=await _sharingService.FindByIdAsync(sharingId),*/
+                
 
              };
             await _commentService.AddAsync(comment);

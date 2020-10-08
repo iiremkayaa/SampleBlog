@@ -3025,16 +3025,6 @@
           "bin/placeholder/Project.Blog.DataAccess.dll": {}
         }
       },
-      "Project.Blog.Dto/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
-        "compile": {
-          "bin/placeholder/Project.Blog.Dto.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Project.Blog.Dto.dll": {}
-        }
-      },
       "Project.Blog.Entities/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -9471,11 +9461,6 @@
       "path": "../Project.Blog.DataAccess/Project.Blog.DataAccess.csproj",
       "msbuildProject": "../Project.Blog.DataAccess/Project.Blog.DataAccess.csproj"
     },
-    "Project.Blog.Dto/1.0.0": {
-      "type": "project",
-      "path": "../Project.Blog.Dto/Project.Blog.Dto.csproj",
-      "msbuildProject": "../Project.Blog.Dto/Project.Blog.Dto.csproj"
-    },
     "Project.Blog.Entities/1.0.0": {
       "type": "project",
       "path": "../Blog/Project.Blog.Entities.csproj",
@@ -9491,8 +9476,7 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.8",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.8",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.4",
-      "Project.Blog.Business >= 1.0.0",
-      "Project.Blog.Dto >= 1.0.0"
+      "Project.Blog.Business >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -9523,9 +9507,6 @@
           "projectReferences": {
             "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Project.Blog.Business\\Project.Blog.Business.csproj": {
               "projectPath": "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Project.Blog.Business\\Project.Blog.Business.csproj"
-            },
-            "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Project.Blog.Dto\\Project.Blog.Dto.csproj": {
-              "projectPath": "C:\\Users\\Irem\\Documents\\GitHub\\BlogMvc\\Project.Blog.Dto\\Project.Blog.Dto.csproj"
             }
           }
         }

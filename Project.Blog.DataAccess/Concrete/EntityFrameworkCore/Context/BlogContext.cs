@@ -1,11 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Mapping;
 using Project.Blog.Entities.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Context
 {

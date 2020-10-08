@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -126,7 +125,12 @@ namespace Project.Blog.Web.Controllers
                         string userId = item.UserId.ToString();
                         var commentUser = await _userManager.FindByIdAsync(userId);
 
-                        var result = await _commentService.isLiked(item.Id, currentUser.Id);
+                        bool result = false;
+                        if (currentUser != null)
+                        {
+                            result= await _commentService.isLiked(item.Id, currentUser.Id);
+                        }
+                        
                         CommentListModel commentModel = _mapper.Map<CommentListModel>(item);
                         commentModel.CommentOwner = commentUser.UserName;
                         commentModel.isLiked = result;
@@ -138,7 +142,7 @@ namespace Project.Blog.Web.Controllers
                 }
 
                 ViewBag.Comments = commentModels;
-                ViewBag.User = currentUser.UserName;
+                ViewBag.User = currentUser!=null ? currentUser.UserName:"";
                 return View(model);
             }
             return BadRequest("");

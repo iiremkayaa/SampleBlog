@@ -19,7 +19,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Project.Blog.Business\Project.Blog.Business.csproj" />
-    <ProjectReference Include="..\Project.Blog.Dto\Project.Blog.Dto.csproj" />
   </ItemGroup>
 
 </Project>

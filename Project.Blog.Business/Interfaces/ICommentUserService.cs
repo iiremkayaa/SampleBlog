@@ -1,8 +1,5 @@
-﻿using Project.Blog.Business.Concrete;
-using Project.Blog.Entities.Concrete;
-using System;
+﻿using Project.Blog.Entities.Concrete;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Project.Blog.Business.Interfaces

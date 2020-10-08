@@ -3,9 +3,7 @@ using Project.Blog.Business.Concrete;
 using Project.Blog.Business.Interfaces;
 using Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Repositories;
 using Project.Blog.DataAccess.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace Project.Blog.Business.Containers.MicrosoftIoC
 {
