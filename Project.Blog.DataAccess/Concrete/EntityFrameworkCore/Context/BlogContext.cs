@@ -24,7 +24,7 @@ namespace Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Context
             modelBuilder.ApplyConfiguration(new CategoryMap());
             modelBuilder.ApplyConfiguration(new CommentUserMap());
             modelBuilder.ApplyConfiguration(new CommentMap());
-           
+            
             
             
            

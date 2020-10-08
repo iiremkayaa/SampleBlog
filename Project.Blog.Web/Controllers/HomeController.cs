@@ -76,14 +76,15 @@ namespace Project.Blog.Web.Controllers
             var currentUser = await GetCurrentUserAsync();
             var x = currentUser;
             Sharing sharing = await _sharingService.FindByIdAsync(id);
-            var ne = sharing;
+            var ne = sharing.UserId;
+            
             if (sharing != null)
             {
                 int? ownerId = sharing.UserId;
                 SharingListModel model = _mapper.Map<SharingListModel>(sharing);
                 var owner = await _userManager.FindByIdAsync(model.UserId.ToString());
                 model.UserName = owner.UserName;
-                
+                var za = model.UserId;
                 List<Comment> comments = await _commentService.GetAllBySharingIdAsync(id);
                 List<CommentListModel> commentModels = new List<CommentListModel>();
                 foreach (var item in comments)

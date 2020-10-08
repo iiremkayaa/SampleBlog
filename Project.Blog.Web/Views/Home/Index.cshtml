@@ -28,7 +28,7 @@
                 </div>
                 <div class="card-footer text-muted">
                    
-                    @sharing.SharingDate.ToString("dddd, MMMM dd yyyy", new System.Globalization.CultureInfo("en-US")) by  <a href="#">@sharing.UserName</a>
+                    @sharing.SharingDate.ToString("dddd, MMMM dd yyyy", new System.Globalization.CultureInfo("en-US")) by  <a asp-action="Index" asp-controller="Profile" asp-route-id="@sharing.UserId">@sharing.UserName</a>
 
                 </div>
 

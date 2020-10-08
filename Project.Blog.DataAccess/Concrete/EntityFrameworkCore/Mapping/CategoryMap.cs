@@ -14,7 +14,7 @@ namespace Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Mapping
             builder.HasKey(I => I.Id);
             builder.Property(I => I.Id).UseIdentityColumn();
             builder.Property(I => I.Name).HasMaxLength(100).IsRequired();
-            builder.HasMany(I => I.Sharings).WithOne(I => I.Category).HasForeignKey(I => I.CategoryId);
+            builder.HasMany(I => I.Sharings).WithOne(I => I.Category).HasForeignKey(I => I.CategoryId).OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
