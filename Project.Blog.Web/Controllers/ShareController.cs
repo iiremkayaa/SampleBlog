@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -16,18 +16,22 @@ namespace Project.Blog.Web.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly IMapper _mapper;
+        private readonly ICategoryService _categoryService;
         public ShareController(ISharingService sharingService, UserManager<User> userManager,
-            SignInManager<User> signInManager, IMapper mapper)
+            SignInManager<User> signInManager, IMapper mapper,ICategoryService categoryService)
         {
             _sharingService = sharingService;
             _userManager = userManager;
             _signInManager = signInManager;
             _mapper = mapper;
+            _categoryService = categoryService;
 
         }
         [Authorize]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            List<Category> categories=await _categoryService.GetAllAsync();
+            ViewBag.Categories = categories;
             return View();
         }
         [HttpPost]
