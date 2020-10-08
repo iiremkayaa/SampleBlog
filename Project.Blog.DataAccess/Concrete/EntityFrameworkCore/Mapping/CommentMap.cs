@@ -15,7 +15,8 @@ namespace Project.Blog.DataAccess.Concrete.EntityFrameworkCore.Mapping
             builder.Property(I => I.Description).HasColumnType("ntext");
             builder.Property(I=>I.NumberOfLikes).HasDefaultValue(0);
             builder.Property(I=>I.LastModificationDate).HasDefaultValueSql("getdate()");
-            builder.HasMany(I => I.CommentUser).WithOne(I => I.Comment).HasForeignKey(I => I.CommentId);
+            builder.HasMany(I => I.CommentUser).WithOne(I => I.Comment).HasForeignKey(I => I.CommentId).OnDelete(DeleteBehavior.Cascade);
+            
 
         }
     }

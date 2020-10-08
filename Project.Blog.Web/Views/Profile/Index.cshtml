@@ -21,16 +21,37 @@
         }
     }
 }
-<div class="col">
+
     <div class="my-4">
-        @foreach (var sharing in Model)
-        {
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h2 class="card-title">@sharing.Title</h2>
-                    <p class="card-text">@displayShortDescription(@sharing.Description)</p>
+        @{
+            if (@ViewBag.Current)
+            {
+                <div class="mr-4 mb-2" style="display:flex;justify-content: flex-end;">
+
+                    <a style="font-size:16px;font-weight:500" asp-controller="Profile" asp-action="Setting">Setting</a>
+
+                </div>
+            }
+           
+        }
+        
+        <div class="col">
+            @foreach (var sharing in Model)
+            {
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h2 class="card-title">@sharing.Title</h2>
+                        <p class="card-text">@displayShortDescription(@sharing.Description)</p>
                         <div style="display:flex;justify-content: flex-end;">
-                            <a asp-action="Detail" asp-route-id="@sharing.Id" class="btn btn-primary">Show Details</a>
+                            <a asp-action="Detail" asp-route-id="@sharing.Id" class="btn btn-primary mr-1">Show Details</a>
+                            @{
+                                if (@ViewBag.Current)
+                                {
+                                    <a asp-action="DeleteSharing" asp-route-id="@sharing.Id" asp-route-user="@sharing.UserId" class="btn btn-primary ml-2">Delete</a>
+
+                                }
+
+                            }
                         </div>
                     </div>
                     <div class="card-footer text-muted container">
@@ -44,11 +65,11 @@
                     </div>
 
                 </div>
-        }
+            }
 
-        
+
+        </div>
+
+
+
     </div>
-
-
-
-</div>

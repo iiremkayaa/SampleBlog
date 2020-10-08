@@ -109,7 +109,7 @@
         <hr>
         <div>
 
-            @Model.SharingDate.ToString("dddd, MMMM dd yyyy", new System.Globalization.CultureInfo("en-US")) by  <a href="#">@Model.UserName</a>
+            @Model.SharingDate.ToString("dddd, MMMM dd yyyy", new System.Globalization.CultureInfo("en-US")) by  <a asp-controller="Profile" asp-action="Index" asp-route-id="@Model.UserId">@Model.UserName</a>
 
         </div>
 

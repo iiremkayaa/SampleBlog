@@ -27,11 +27,21 @@ namespace Project.Blog.Web.Controllers
             _commentService = commentService;
             _mapper = mapper;
         }
-        public async Task<IActionResult> IndexAsync()
+        public async Task<IActionResult> IndexAsync(int? id)
         {
-            User currentUser= await GetCurrentUserAsync();
-            List<Sharing> sharings = await _sharingService.GetAllByUserIdAsync(currentUser.Id);
-            
+            var ne = id;
+            List<Sharing> sharings;
+            if (id == null)
+            {
+                User currentUser = await GetCurrentUserAsync();
+                sharings = await _sharingService.GetAllByUserIdAsync(currentUser.Id);
+                ViewBag.Current = true;
+            }
+            else
+            {
+                sharings = await _sharingService.GetAllByUserIdAsync((int)id);
+                ViewBag.Current = false;
+            }
             List<SharingListModel> models = new List<SharingListModel>();
 
             foreach (var item in sharings)
@@ -40,15 +50,10 @@ namespace Project.Blog.Web.Controllers
                 var user = await _userManager.FindByIdAsync(userId);
              
                 List<Comment> comments= await _commentService.GetAllBySharingIdAsync(item.Id);
-                /*int numberOfComment = 0;
-                if (item.Comments != null)
-                {
-                    numberOfComment = item.Comments.Count;
-                } */               
+                          
                 SharingListModel model = _mapper.Map<SharingListModel>(item);
                 model.UserName = user.UserName;
-                //model.numberOfLikes = ;
-                model.NumberOfComments = comments.Count;   //numberOfComment;
+                model.NumberOfComments = comments.Count;  
                 
                 models.Add(model);
 
@@ -63,18 +68,7 @@ namespace Project.Blog.Web.Controllers
             if (user != null)
             {
                 model=_mapper.Map<UserListModel>(user);
-                /*model = new UserListModel
-                {
-                    Id = user.Id,
-                    UserName = user.UserName,
-                    Gender = user.Gender,
-                    Name = user.Name,
-                    LastName = user.LastName,
-                    PhoneNumber = user.PhoneNumber,
-                    Sharings = user.Sharings,
-                    Comments = user.Comments,
-                    Email = user.Email,
-                };*/
+                
             }
             else
             {
@@ -119,14 +113,9 @@ namespace Project.Blog.Web.Controllers
                 int? ownerId = sharing.UserId;
                 User user = new User();
                 user = await _userManager.FindByIdAsync(ownerId.ToString());
-                SharingListModel model = new SharingListModel
-                {
-                    Id = sharing.Id,
-                    Title = sharing.Title,
-                    Description = sharing.Description,
-                    SharingDate = sharing.SharingDate,
-                    UserName = user.UserName,
-                };
+                SharingListModel model = _mapper.Map<SharingListModel>(sharing);
+                model.UserName = user.UserName;
+                
                 List<Comment> comments = await _commentService.GetAllBySharingIdAsync(id);
                 List<CommentListModel> commentModels = new List<CommentListModel>();
                 foreach (var item in comments)
@@ -138,18 +127,10 @@ namespace Project.Blog.Web.Controllers
                         var commentUser = await _userManager.FindByIdAsync(userId);
 
                         var result = await _commentService.isLiked(item.Id, currentUser.Id);
-                        CommentListModel commentModel = new CommentListModel
-                        {
-                            Id = item.Id,
-                            Description = item.Description,
-                            CommentDate = item.CommentDate,
-                            NumberOfLikes = item.NumberOfLikes,
-                            LastModificationDate = item.LastModificationDate,
-                            CommentOwner=commentUser.UserName,
-                            CommentUsers = item.CommentUser,
-                            isLiked = result,
-
-                        };
+                        CommentListModel commentModel = _mapper.Map<CommentListModel>(item);
+                        commentModel.CommentOwner = commentUser.UserName;
+                        commentModel.isLiked = result;
+                        
                         commentModels.Add(commentModel);
                     }
 
@@ -186,6 +167,11 @@ namespace Project.Blog.Web.Controllers
             var num = sharingId;
             await _commentService.RemoveAsync(id);
             return RedirectToAction("Detail", new { id = sharingId });
+        }
+        public async Task<IActionResult> DeleteSharing(int id,int user)
+        {
+            await _sharingService.RemoveAsync(id);
+            return RedirectToAction("Index", "Profile",new { id = user });
         }
         [Authorize]
         public async Task<IActionResult> LikeComment(int id, int sharingId)
