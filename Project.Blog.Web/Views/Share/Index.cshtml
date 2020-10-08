@@ -19,10 +19,11 @@
                     <div class="form-group">
                         <label asp-for="@Model.CategoryId">Category</label>
                         <select class="form-control" asp-for="@Model.CategoryId">
-                            <option value="1">Book</option>
-                            <option value="2">Movie</option>
-                            <option value="3">Music</option>
-                            <option value="4">Travel</option>
+                            @foreach (Category category in ViewBag.Categories)
+                            {
+                                <option value="@category.Id">@category.Name</option>
+                            }
+                            
 
                         </select>
                     </div>
